@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="content-type" content="text/html"/>
+		<meta name="author" content="Sam Ath Try"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+		<title>To Read Out Loud</title>
+
+		<meta name="description" content="A simple page that allows users to enter the text into the textarea and let Microsoft Edge browser to read out loud. Date first written: Sat. 11 Sep. 2021. By Sam Ath Try."/>
+		<meta name="keywords" content="read out loud"/>
+
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?Family=Noto+Sans">
+		
+		<!-- Style here -->
+		<style>
+		body {
+			font-family: "Noto Sans", "Noto Sans Khmer", "Khmer OS System", Arial, "Noto Sans CJK SC", "Microsoft Yahei","????", STXihei, "????", serif;
+			font-size:  1em;
+		}
+		#textbox-1 {
+			font-family: "Noto Sans", "Noto Sans Khmer", "Khmer OS System", Arial, "Noto Sans CJK SC", "Microsoft Yahei","????", STXihei, "????", serif;
+			font-size:  1em;
+		}
+		</style>
+	</head>
+
+	<body>
+		<p>Hello! Here is the text being read out loud:</p>
+		<!-- <p>Enter text in the textbox below.</p><br> -->
+		<form>
+			<textarea id="textbox-1" name="textbox-1" placeholder="Enter the text here to read out loud..." rows="10" style="background-color:#F9F2E3; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;"></textarea>
+			<br>
+		</form>
+
+		<button id="btn-set-textbox">Cheers!</button>
+
+		<!-- Script here -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#btn-set-textbox").click(function(){
+					var textbox1_val = $("#textbox-1").val();
+					// alert(textbox1_val);
+					$("#textbox-1").text(textbox1_val);
+				});
+			});
+		</script>
+
+	</body>
+
+</html>
