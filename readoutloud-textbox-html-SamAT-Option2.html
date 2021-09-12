@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="content-type" content="text/html"/>
+		<meta name="author" content="Sam Ath Try"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?Family=Noto+Sans">
+		
+		<!-- Style here -->
+		<style>
+			body {
+				font-family: "Noto Sans", "Noto Sans Khmer", "Khmer OS System", Arial, "Noto Sans CJK SC", "Microsoft Yahei","????", STXihei, "????", serif;
+				font-size:  1em;
+				background-color: #F9F2E3;
+				text-shadow: 0.5px 0.5px 0.5px #aaa;
+			}
+			.footer {
+				position:  fixed;
+				left:  0;
+				bottom:  0;
+				width:  100%;
+				text-align:  center;
+				font-size:  0.75em;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- <h4>Here:</h4><hr> -->
+		<ul id="instruction">
+			<li><a> How to use: download this html file to a computer and open it (offline/locally) with Microsoft Edge browser. (At the time of writing, I cannot get it working while opening online).</li>
+		</ul>
+
+		<form>
+			<p id="txt-to-read">
+			<textarea id="textbox-1" name="textbox-1" placeholder="Enter the text here to read out loud...&#10; &#10; To read out loud on Microsoft Edge browser, press Cheers button, and then Ctrl+Shift+U, or go to Read aloud..." rows="25" style="background-color:#F9F2E3; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;"></textarea>
+			</p>
+			<br>
+		</form>
+
+		<div id="btn-1">
+			<button id="btn-set-textbox">Cheers!</button>
+		</div>
+
+		<!-- Script here -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#btn-set-textbox").click(function(){
+					var textbox1_val = $("#textbox-1").val();
+					// alert(textbox1_val);
+					$("#txt-to-read").html(textbox1_val);
+					$("#instruction").html("");
+					$("#btn-1").html("");
+
+				});
+			});
+		</script>
+				
+		<!-- <div class="footer">
+			<p>Maintained by Sam Ath Try.</p>
+		</div> -->
+	</body>
+
+</html>
