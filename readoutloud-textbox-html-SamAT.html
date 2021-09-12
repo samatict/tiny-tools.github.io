@@ -18,14 +18,18 @@
 		<!-- Style here -->
 		<style>
 			body {
-				font-family: "Noto Sans", "Noto Sans Khmer", "Khmer OS System", Arial, "Noto Sans CJK SC", "Microsoft Yahei","????", STXihei, "????", serif;
+				font-family: "Noto Sans", "Noto Sans Khmer", "Khmer OS System", Tahoma, Arial, "Noto Sans CJK SC", "Microsoft Yahei","????", STXihei, "????", serif;
 				font-size:  1em;
 				background-color: #F9F2E3;
 				text-shadow: 0.5px 0.5px 0.5px #aaa;
 			}
 
+			#instruction {
+				font-size:  0.75em;
+			}
+
 			#textbox-1 {
-			font-family: "Noto Sans", "Noto Sans Khmer", "Khmer OS System", Arial, "Noto Sans CJK SC", "Microsoft Yahei","????", STXihei, "????", serif;
+			font-family: "Noto Sans", "Noto Sans Khmer", "Khmer OS System", Tahoma, Arial, "Noto Sans CJK SC", "Microsoft Yahei","????", STXihei, "????", serif;
 			font-size:  1em;
 			}
 
@@ -37,10 +41,11 @@
 				text-align:  center;
 				font-size:  0.75em;
 			}
-			/* a way to get the button working on iOS */
+
 			#btn-1 {
 				cursor: point;
-			}			
+			}
+
 		</style>
 	</head>
 
@@ -57,19 +62,31 @@
 		</form>
 
 		<div id="btn-1">
-			<button id="btn-set-textbox">Read Aloud this text</button>
+			<button id="btn-set-textbox">Read aloud this text</button>
 		</div>
 
-		<div class="footer">
+		<!-- <div class="footer">
 			<p>Created and maintained by Sam Ath Try.</p>
-		</div>
+		</div> -->
 
 		<!-- Script here -->
 
-		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- -->
+		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
  		<!-- Dev_note: Use https from code.jquery to get it working on GitHub static page -->
 		<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+		<!-- <script>
+			$(document).ready(function(){
+				$("#btn-set-textbox").click(function(){
+					var textbox1_val = $("#textbox-1").val();
+					// alert(textbox1_val);
+					$("#txt-to-read").html(textbox1_val);
+					$("#instruction").html("");
+					$("#btn-1").html("");
+					$(".footer").html("");
+				});
+			});
+		</script> -->
+
 		<script>
 			$(document).ready(function(){
 				$("#btn-set-textbox").click(function(){
@@ -82,5 +99,6 @@
 				});
 			});
 		</script>
+
 	</body>
 </html>
