@@ -7,6 +7,12 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+
+		<title>To Read Out Loud</title>
+
+		<meta name="description" content="A simple page that allows users to enter the text into the textarea and let Microsoft Edge browser to read out loud. Date first written: Sat. 11 Sep. 2021. By Sam Ath Try."/>
+		<meta name="keywords" content="read out loud"/>
+
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?Family=Noto+Sans">
 		
 		<!-- Style here -->
@@ -17,6 +23,12 @@
 				background-color: #F9F2E3;
 				text-shadow: 0.5px 0.5px 0.5px #aaa;
 			}
+
+			#textbox-1 {
+			font-family: "Noto Sans", "Noto Sans Khmer", "Khmer OS System", Arial, "Noto Sans CJK SC", "Microsoft Yahei","????", STXihei, "????", serif;
+			font-size:  1em;
+			}
+
 			.footer {
 				position:  fixed;
 				left:  0;
@@ -29,26 +41,24 @@
 	</head>
 
 	<body>
-		<!-- <h4>Here:</h4><hr> -->
-		<ul id="instruction">
-			<li><a> How to use: open this html file to a computer/phone (offline/locally) with Microsoft Edge browser. (At the time of writing, I cannot get it working while opening online).</li>
-		</ul>
+
+		<div id="instruction">
+			<i><b>How to use:</b> Open this html file to a computer/phone with Microsoft Edge browser and enter the text. Read the instruction/hint in the textbox. </i>
+		</div>
 
 		<form>
 			<p id="txt-to-read">
-			<textarea id="textbox-1" name="textbox-1" placeholder="Enter the text here to read out loud...&#10; &#10; To read out loud on Microsoft Edge browser, press Cheers button, and then Ctrl+Shift+U, or go to Read aloud..." rows="25" style="background-color:#F9F2E3; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;"></textarea>
+			<textarea id="textbox-1" name="textbox-1" placeholder="Enter the text here to read out loud...&#10;&#10;To read out loud on Microsoft Edge browser, press the Read Aloud this text button, and then Ctrl+Shift+U, or go to Read aloud.&#10;&#10;To use again, refresh the page!" rows="25" style="background-color:#F9F2E3; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;"></textarea>
 			</p>
-			<br>
 		</form>
 
 		<div id="btn-1">
-			<button id="btn-set-textbox">Cheers!</button>
+			<button id="btn-set-textbox">Read Aloud this text</button>
 		</div>
 
-
-		<!-- <div class="footer">
-			<p>Maintained by Sam Ath Try.</p>
-		</div> -->
+		<div class="footer">
+			<p>Created and maintained by Sam Ath Try.</p>
+		</div>
 
 		<!-- Script here -->
 
@@ -56,7 +66,6 @@
  -->
  		<!-- Dev_note: Use https from code.jquery to get it working on GitHub static page -->
 		<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-
 		<script>
 			$(document).ready(function(){
 				$("#btn-set-textbox").click(function(){
@@ -65,7 +74,7 @@
 					$("#txt-to-read").html(textbox1_val);
 					$("#instruction").html("");
 					$("#btn-1").html("");
-
+					$(".footer").html("");
 				});
 			});
 		</script>
