@@ -1,0 +1,224 @@
+<!-- Customised/Assembled by Sam Ath Try, in May 2022, and being update from time to time. -->
+
+<!-- Adapted from: https://github.com/ThyrithSor/momentkh -->
+<!-- Adapted from https://www.w3schools.com/graphics/tryit.asp?filename=trycanvas_clock_start -->
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Koh+Santepheap:wght@300&family=Moulpali&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://bootswatch.com/5/superhero/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <style>
+            body {
+                font-family: 'Koh Santepheap', cursive;
+            }
+
+            .pali {
+                font-family: 'Moulpali', cursive;
+				font-size: 1.3em;
+                line-height: 3rem;
+            }
+
+            .vdp-datepicker__calendar {
+                background-color: #4e5d6c !important;
+            }
+			
+			#credit-footer {
+				font-size: 0.5em;
+				position: fixed;
+				left: 50%;
+				bottom: 5px;
+				transform: translate(-50%, -50%);
+				margin: 0 auto;
+			}
+			
+        </style>
+	
+		<style>
+			@font-face { font-family: customFont; src: url('KhmerMEF2_KhmNum.ttf'); } 
+		</style>
+
+    </head>
+	<body style="text-align:center;">
+	
+		<p align="center">	
+			<canvas id="canvas" width="400" height="400"
+		style="">
+		</canvas>
+		</p>
+
+		<script>
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		var radius = canvas.height / 2;
+		ctx.translate(radius, radius);
+		radius = radius * 0.90
+		setInterval(drawClock, 1000);
+
+
+		function drawClock() {
+		  drawFace(ctx, radius);
+		  drawNumbers(ctx, radius);
+		  drawTime(ctx, radius);
+		}
+
+		function drawFace(ctx, radius) {
+		  var grad;
+		  ctx.beginPath();
+		  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+		  ctx.fillStyle = 'white';
+		  ctx.fill();
+		  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+		  grad.addColorStop(0, '#333');
+		  grad.addColorStop(0.5, 'white');
+		  grad.addColorStop(1, '#333');
+		  ctx.strokeStyle = grad;
+		  ctx.lineWidth = radius*0.1;
+		  ctx.stroke();
+		  ctx.beginPath();
+		  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+		  ctx.fillStyle = '#333';
+		  ctx.fill();
+		}
+
+		function drawNumbers(ctx, radius) {
+		  var ang;
+		  var num;
+		  
+		  ctx.font = radius*0.15 + "px customFont";
+		  ctx.textBaseline="middle";
+		  ctx.textAlign="center";
+		  for(num = 1; num < 13; num++){
+			ang = num * Math.PI / 6;
+			ctx.rotate(ang);
+			ctx.translate(0, -radius*0.85);
+			ctx.rotate(-ang);
+			ctx.fillText(num.toString(), 0, 0);
+			ctx.rotate(ang);
+			ctx.translate(0, radius*0.85);
+			ctx.rotate(-ang);
+		  }
+		}
+
+		function drawTime(ctx, radius){
+			var now = new Date();
+			var hour = now.getHours();
+			var minute = now.getMinutes();
+			var second = now.getSeconds();
+			//hour
+			hour=hour%12;
+			hour=(hour*Math.PI/6)+
+			(minute*Math.PI/(6*60))+
+			(second*Math.PI/(360*60));
+			drawHand(ctx, hour, radius*0.5, radius*0.07);
+			//minute
+			minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+			drawHand(ctx, minute, radius*0.8, radius*0.07);
+			// second
+			second=(second*Math.PI/30);
+			drawHand(ctx, second, radius*0.9, radius*0.02);
+		}
+
+		function drawHand(ctx, pos, length, width) {
+			ctx.beginPath();
+			ctx.lineWidth = width;
+			ctx.lineCap = "round";
+			ctx.moveTo(0,0);
+			ctx.rotate(pos);
+			ctx.lineTo(0, -length);
+			ctx.stroke();
+			ctx.rotate(-pos);
+		}
+		</script>
+    
+		<div id="app">
+            
+            <div class="container">
+				<!-- ឥឡូវនេះគឺ ៖ -->
+                <p class="pali col-12 text-center" v-html="displayedKhmerDate"></p>
+            </div>
+        </div>
+		
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/km.min.js"></script>
+		<script src="https://unpkg.com/vuejs-datepicker"></script>
+		<script src="./constant.js"></script>
+		<script src="./locale/km.js"></script>
+		<script src="./getSoriyatraLerngSak.js"></script>
+		<script src="./momentkh.js"></script>
+		<script>
+			window.onload = function() {
+				var moment = momentkh(window.moment)
+
+				new Vue({
+					el: "#app",
+					data() {
+						return {
+							format: 'dN ខែm ឆ្នាំa e ព.ស. b',
+							now: moment(),
+							date: moment(),
+							DatePickerFormat: 'yyyy',
+							language: {
+								language: 'Khmer', 
+								months: ['មករា', 'កុម្ភៈ', 'មីនា', 'មេសា', 'ឧសភា', 'មិថុនា', 'កក្កដា', 'សីហា', 'កញ្ញា', 'តុលា', 'វិច្ឆិកា', 'ធ្នូ'], 
+								monthsAbbr: ['មករា', 'កុម្ភៈ', 'មីនា', 'មេសា', 'ឧសភា', 'មិថុនា', 'កក្កដា', 'សីហា', 'កញ្ញា', 'តុលា', 'វិច្ឆិកា', 'ធ្នូ'], 
+								days: ['អាទិត្យ', 'ចន្ទ', 'អង្គារ', 'ពុធ', 'ព្រហស្បត្តិ៍', 'សុក្រ', 'សៅរ'], 
+								rtl: false, 
+								ymd: false, 
+								yearSuffix: ''
+							}
+						}
+					},
+					computed: {
+						year() {
+							return this.date.year()
+						},
+						formattedDate() {
+							return this.date.locale('en').format('YYYY-MM-DD')
+						},
+						displayedDate() {
+							return this.now
+						},
+						displayedKhmerDate() {
+							return this.now.locale('km').format('ថ្ងៃ dddd ទី DD ខែMMMM ឆ្នាំ YYYY') + '<br/>ថ្ងៃទី ' + this.now.toKhDate(this.format) + '<br/>' + this.now.locale('km').format('h:mm:ss a')
+						},
+						newYearMoment() {
+							return moment.getKhNewYearMoment(this.year).locale('km').format('ថ្ងៃ dddd ទី DD ខែMMMM ឆ្នាំ YYYY វេលាម៉ោង h:mm នាទី a')
+						}
+					},
+					methods: {
+						pickedYear(year) {
+							this.date = moment(year)
+						}
+					},
+					mounted() {
+						setInterval(() => {
+							this.now = moment()
+						}, 1000)
+					},
+					components: {
+						'vuejs-datepicker':vuejsDatepicker
+					}
+				})
+			}
+		</script>
+
+    </body>
+	
+	<footer>
+		<br/>
+		<div id="credit-footer">Assembled/Customised by Sam Ath TRY</div>
+	</footer>
+</html>
