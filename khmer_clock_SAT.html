@@ -26,7 +26,7 @@
 
             .pali {
                 font-family: 'Moulpali', cursive;
-				font-size: 1.3em;
+				font-size: 1.5em;
                 line-height: 3rem;
             }
 
@@ -174,7 +174,7 @@
 								language: 'Khmer', 
 								months: ['មករា', 'កុម្ភៈ', 'មីនា', 'មេសា', 'ឧសភា', 'មិថុនា', 'កក្កដា', 'សីហា', 'កញ្ញា', 'តុលា', 'វិច្ឆិកា', 'ធ្នូ'], 
 								monthsAbbr: ['មករា', 'កុម្ភៈ', 'មីនា', 'មេសា', 'ឧសភា', 'មិថុនា', 'កក្កដា', 'សីហា', 'កញ្ញា', 'តុលា', 'វិច្ឆិកា', 'ធ្នូ'], 
-								days: ['អាទិត្យ', 'ចន្ទ', 'អង្គារ', 'ពុធ', 'ព្រហស្បត្តិ៍', 'សុក្រ', 'សៅរ'], 
+								days: ['អាទិត្យ', 'ចន្ទ', 'អង្គារ', 'ពុធ', 'ព្រហស្បតិ៍', 'សុក្រ', 'សៅរ៍'], 
 								rtl: false, 
 								ymd: false, 
 								yearSuffix: ''
@@ -192,7 +192,7 @@
 							return this.now
 						},
 						displayedKhmerDate() {
-							return this.now.locale('km').format('ថ្ងៃ dddd ទី DD ខែMMMM ឆ្នាំ YYYY') + '<br/>ថ្ងៃទី ' + this.now.toKhDate(this.format) + '<br/>' + this.now.locale('km').format('h:mm:ss a')
+							return this.now.locale('km').format('h:mm:ss a') + '<br/>' + this.now.locale('km').format('ថ្ងៃdddd ទី DD ខែMMMM ឆ្នាំ YYYY') + '<br/>ថ្ងៃទី ' + this.now.toKhDate(this.format)
 						},
 						newYearMoment() {
 							return moment.getKhNewYearMoment(this.year).locale('km').format('ថ្ងៃ dddd ទី DD ខែMMMM ឆ្នាំ YYYY វេលាម៉ោង h:mm នាទី a')
