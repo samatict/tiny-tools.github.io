@@ -22,14 +22,17 @@
 
         <style>
             body {
-                /*font-family: 'Koh Santepheap', cursive; */
-		font-family: 'Roboto', sans-serif;
-		font-size: 2em;
-		line-height: 3rem;
+                font-family: 'Koh Santepheap', cursive;
             }
 
             .pali {
                 font-family: 'Moulpali', cursive;
+		font-size: 1.5em;
+                line-height: 3rem;
+            }
+		
+		.entxt {
+                font-family: 'Roboto', sans-serif;
 		font-size: 1.5em;
                 line-height: 3rem;
             }
@@ -150,7 +153,7 @@
             
             <div class="container">
 		<!-- ឥឡូវនេះគឺ ៖ -->
-		<p class="col-12 text-center" v-html="displayedDate"></p>
+		<p class="entxt col-12 text-center" v-html="displayedDate"></p>
                 <p class="pali col-12 text-center" v-html="displayedKhmerDate"></p>
             </div>
         </div>
