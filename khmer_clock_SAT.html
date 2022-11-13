@@ -190,10 +190,11 @@
 							return this.date.locale('en').format('YYYY-MM-DD')
 						},
 						displayedDate() {
-							return this.now.format('DDD. DD-MM-YYYY H:MM:SS A')
+							return this.now.local('en').format('DDD. DD-MM-YYYY H:MM:SS A')
 						},
 						displayedKhmerDate() {
-							return this.now.locale('km').format('h:mm:ss a') + '<br/>' + this.now.locale('km').format('ថ្ងៃdddd ទី DD ខែMMMM ឆ្នាំ YYYY') + '<br/>ថ្ងៃ ' + this.now.toKhDate(this.format)
+							return this.now.locale('km').format('h:mm:ss a') + '<br/>' + this.now.locale('km').format('ថ្ងៃdddd ទី DD ខែMMMM ឆ្នាំ YYYY') 
+								//+ '<br/>ថ្ងៃ ' + this.now.toKhDate(this.format)
 						},
 						newYearMoment() {
 							return moment.getKhNewYearMoment(this.year).locale('km').format('ថ្ងៃ dddd ទី DD ខែMMMM ឆ្នាំ YYYY វេលាម៉ោង h:mm នាទី a')
