@@ -31,7 +31,7 @@
                 line-height: 3rem;
             }
 		
-		.entxt {
+	    .entxt {
                 font-family: 'Roboto', sans-serif;
 		font-size: 1.5em;
                 line-height: 3rem;
@@ -197,7 +197,7 @@
 							return this.date.locale('en').format('YYYY-MM-DD')
 						},
 						displayedDate() {
-							return this.now.local('en').format('DDD. DD-MM-YYYY H:MM:SS A')
+							return this.now.format('DDD. DD-MM-YYYY H:MM:SS A')
 						},
 						displayedKhmerDate() {
 							return this.now.locale('km').format('h:mm:ss a') + '<br/>' + this.now.locale('km').format('ថ្ងៃdddd ទី DD ខែMMMM ឆ្នាំ YYYY') 
