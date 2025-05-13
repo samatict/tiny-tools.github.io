@@ -3,25 +3,21 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<meta http-equiv="content-type" content="text/html"/>
-		<meta name="author" content="Sam Ath Try"/>
-
+		<meta name="author" content="Sam Try"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-
-		<title>To Read Out Loud</title>
-
 		<meta name="description" content="A simple page that allows users to enter the text into the textarea and let Microsoft Edge browser to read out loud. Date first written: Sat. 11 Sep. 2021. By Sam Ath Try."/>
 		<meta name="keywords" content="read out loud, read aloud,"/>
 
+		<title>Text Read Aloud</title>
+
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?Family=Noto+Sans">
 		
-		<!-- Style here -->
 		<style>
 			body {
 				font-family: "Noto Sans", "Noto Sans Khmer", "Khmer OS System", Tahoma, Arial, "Noto Sans CJK SC", "Microsoft Yahei","????", STXihei, "????", serif;
 				font-size:  1em;
-				background-color: #F9F2E3;
-				text-shadow: 0.5px 0.5px 0.5px #aaa;
+				background-color: #F1E2C9;
+				/* text-shadow: 0.5px 0.5px 0.5px #aaa; */
 			}
 
 			#instruction {
@@ -29,8 +25,9 @@
 			}
 
 			#textbox-1 {
-				font-family: "Noto Sans", "Noto Sans Khmer", "Khmer OS System", Tahoma, Arial, "Noto Sans CJK SC", "Microsoft Yahei","????", STXihei, "????", serif;
+				font-family: "Noto Sans", "Noto Sans Khmer", "Khmer OS System", Tahoma, Arial, "Noto Sans CJK SC", "Microsoft Yahei", serif;
 				font-size:  1em;
+				height: calc(100vh - 120px);
 			}
 
 			.footer {
@@ -42,7 +39,7 @@
 				font-size:  0.5em;
 			}
 
-			/*this is to get the button working on iOS devices.*/
+			/*This is to get the button working on iOS devices.*/
 			#btn-1 {
 				cursor: point;
 			}
@@ -56,17 +53,18 @@
 	<body>
 
 		<div id="instruction">
-			<i><b>How to use:</b> Open this html file to a computer/phone with Microsoft Edge browser and enter the text. Read the instruction/hint in the textbox. </i>
+			<i><b>How to use:</b> Open this page/file on the Microsoft Edge browser and enter the text. Read the instruction/hint in the textbox. </i>
 		</div>
-
+		
 		<form>
 			<p id="txt-to-read">
-			<textarea id="textbox-1" name="textbox-1" placeholder="Enter the text here to read out loud...&#10;&#10;To read out loud on Microsoft Edge browser, press the Read Aloud this text button, and then Ctrl+Shift+U, or go to Read aloud.&#10;&#10;To use again, refresh the page. Cheers!" rows="15" style="background-color:#F9F2E3; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;"></textarea>
+			<textarea id="textbox-1" name="textbox-1" placeholder="Enter the text here...&#10;&#10;To read out loud on Microsoft Edge browser, press the <<Read this text>> button, then Ctrl+Shift+U, or select <<Read Aloud>> from the browser tool.&#10;&#10;If the text is not in English, select the language in the Read Aloud setting. To use again, refresh the page."
+				style="background-color:#F1E2C9; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;"></textarea>
 			</p>
 		</form>
-
+		
 		<div id="btn-1">
-			<button id="btn-set-textbox">Read aloud this text</button>
+			<button id="btn-set-textbox">Read this text</button>
 		</div>
 
 		<!-- <div class="footer">
@@ -74,8 +72,11 @@
 		</div> -->
 
 		<!-- Script here -->
- 		<!-- Dev_note: Use https from code.jquery to get it working on GitHub static page -->
-		<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+ 		<!-- Use https from code.jquery to get it working on GitHub static page -->
+		<script 
+			src="https://code.jquery.com/jquery-3.1.1.js">
+		</script>
+
 		<script>
 			$(document).ready(function(){
 				$("#btn-set-textbox").click(function(){
@@ -90,4 +91,6 @@
 		</script>
 
 	</body>
+
 </html>
+<!-- END OF CODE -->
