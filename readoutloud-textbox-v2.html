@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Text Reader Reading</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
+
+<style>
+  body {
+    font-family: "Noto Sans", "Noto Serif Khmer", "Noto Sans Khmer", Tahoma, Arial, sans-serif;
+    background: #F1E2C9;
+    margin: 0;
+    color: #222;
+  }
+
+  .container {
+    margin: auto;
+    padding: 16px;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 220px;
+    font-family: inherit;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #888;
+    background: #fffefa;
+    resize: vertical;
+  }
+
+  .controls {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  button {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #666;
+    cursor: pointer;
+    background: white;
+  }
+
+  button:hover {
+    background: #f3f3f3;
+  }
+
+  /* Article View */
+  main {
+    margin-top: 24px;
+  }
+
+  article {
+    background: rgba(255,255,255,0.6);
+    padding: 22px;
+    border-radius: 14px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+  }
+
+  article h1 {
+    margin-top: 0;
+  }
+
+  article p {
+    margin-bottom: 1em;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .status {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #444;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- INPUT VIEW -->
+  <div id="input-view">
+    <h2>Paste your text</h2>
+
+    <textarea id="inputText"
+      placeholder="Paste or type your text here...
+
+Then click 'Convert to Article'.
+
+After that you can:
+• Use browser Reader Mode (if available)
+• Click 'Read Aloud' button"
+    ></textarea>
+
+    <div class="controls">
+      <button onclick="convertToArticle()">Convert to Article</button>
+      <button onclick="clearAll()">Clear</button>
+    </div>
+  </div>
+
+  <!-- READER VIEW -->
+  <main id="reader-view" class="hidden">
+    <div class="controls">
+      <button onclick="readAloud()">🔊 Read Aloud</button>
+      <button onclick="stopReading()">⏹ Stop</button>
+      <button onclick="goBack()">✏ Edit</button>
+    </div>
+
+    <div class="status" id="statusText"></div>
+
+    <article>
+      <h1></h1>
+      <div id="articleContent"></div>
+    </article>
+  </main>
+
+</div>
+
+<script>
+const textarea = document.getElementById("inputText");
+const articleContent = document.getElementById("articleContent");
+const inputView = document.getElementById("input-view");
+const readerView = document.getElementById("reader-view");
+const statusText = document.getElementById("statusText");
+
+/* Convert text -> clean article */
+function convertToArticle() {
+  const text = textarea.value.trim();
+
+  if (!text) {
+    alert("Please enter some text.");
+    return;
+  }
+
+  // Split paragraphs (blank lines)
+  const paragraphs = text.split(/\n\s*\n/).filter(p => p.trim());
+
+  // Build clean HTML safely
+  articleContent.innerHTML = "";
+  paragraphs.forEach(p => {
+    const el = document.createElement("p");
+    el.textContent = p.trim();
+    articleContent.appendChild(el);
+  });
+
+  // Switch UI
+  inputView.classList.add("hidden");
+  readerView.classList.remove("hidden");
+
+  statusText.textContent = "✅ Converted to clean article view. You can now use Reader Mode or Read Aloud.";
+}
+
+/* Read aloud using browser TTS */
+function readAloud() {
+  const text = textarea.value.trim();
+
+  if (!text) return;
+
+  if (!("speechSynthesis" in window)) {
+    statusText.textContent = "❌ Read Aloud not supported in this browser.";
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+
+  // Basic tuning
+  utterance.rate = 1;
+  utterance.pitch = 1;
+  utterance.volume = 1;
+
+  utterance.onstart = () => {
+    statusText.textContent = "🔊 Reading...";
+  };
+
+  utterance.onend = () => {
+    statusText.textContent = "✅ Finished reading.";
+  };
+
+  utterance.onerror = () => {
+    statusText.textContent = "❌ Error while reading.";
+  };
+
+  window.speechSynthesis.speak(utterance);
+}
+
+/* Stop reading */
+function stopReading() {
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+    statusText.textContent = "⏹ Stopped.";
+  }
+}
+
+/* Back to edit */
+function goBack() {
+  stopReading();
+  readerView.classList.add("hidden");
+  inputView.classList.remove("hidden");
+}
+
+/* Clear everything */
+function clearAll() {
+  stopReading();
+  textarea.value = "";
+  articleContent.innerHTML = "";
+  statusText.textContent = "";
+}
+</script>
+
+</body>
+</html>
+
+<!-- Created and maintained by Sam Ath Try. -->
+<!-- 2026.06 : with help from MS Copilot. -->
