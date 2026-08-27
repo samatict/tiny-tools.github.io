@@ -4,20 +4,31 @@
   <meta charset="UTF-8" />
   <meta http-equiv="content-type" content="text/html" />
   <meta name="author" content="Sam Try" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
   <meta
     name="description"
-    content="Paste text, convert it to a clean article view, then use browser Reader Mode or built-in Read Aloud."
+    content="Paste text and convert it into a clean semantic article that can be analyzed by browser Reader Mode, Immersive Reader, and Read Aloud."
   />
+
   <meta
     name="keywords"
-    content="read aloud, reader mode, immersive reader, text to speech, iOS, GitHub Pages"
+    content="read aloud, reader mode, immersive reader, text to speech, Microsoft Edge, Web Speech API, GitHub Pages"
   />
-  <meta name="theme-color" content="#F1E2C9" id="themeColorMeta" />
+
+  <meta
+    name="theme-color"
+    content="#F1E2C9"
+    id="themeColorMeta"
+  />
 
   <title>Text Read Aloud</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+
   <link
     rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Noto+Sans"
@@ -34,9 +45,9 @@
       --button-hover: #f4f4f4;
       --accent: #4b5563;
       --textarea-bg: #fffefb;
-      --article-bg: rgba(255,255,255,0.82);
-      --article-border: rgba(0,0,0,0.06);
-      --header-border: rgba(0,0,0,0.08);
+      --article-bg: rgba(255, 255, 255, 0.82);
+      --article-border: rgba(0, 0, 0, 0.06);
+      --header-border: rgba(0, 0, 0, 0.08);
       --shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
     }
 
@@ -51,8 +62,8 @@
       --accent: #9ca3af;
       --textarea-bg: #1a1a1a;
       --article-bg: rgba(28, 28, 28, 0.98);
-      --article-border: rgba(255,255,255,0.08);
-      --header-border: rgba(255,255,255,0.12);
+      --article-border: rgba(255, 255, 255, 0.08);
+      --header-border: rgba(255, 255, 255, 0.12);
       --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     }
 
@@ -64,8 +75,10 @@
     body {
       margin: 0;
       padding: 0;
+
       background: var(--bg);
       color: var(--text);
+
       font-family:
         "Noto Sans Khmer",
         "Khmer OS System",
@@ -75,7 +88,9 @@
         "Noto Sans CJK SC",
         "Microsoft Yahei",
         serif;
+
       -webkit-text-size-adjust: 100%;
+
       transition:
         background-color 0.25s ease,
         color 0.25s ease;
@@ -96,14 +111,20 @@
       display: flex;
       justify-content: flex-end;
       margin: 6px;
+      font-size: 0.75rem;
     }
 
     .card {
       background: var(--card);
-      border: 1px solid rgba(0,0,0,0.08);
+
+      border: 1px solid rgba(0, 0, 0, 0.08);
+
       border-radius: 16px;
+
       box-shadow: var(--shadow);
+
       padding: 8px;
+
       transition:
         background-color 0.25s ease,
         color 0.25s ease,
@@ -112,40 +133,59 @@
 
     .title {
       margin: 0 0 6px;
+
       font-size: 1.5rem;
+
       line-height: 1.2;
     }
 
     .subtitle {
       margin: 0 0 14px;
+
       color: var(--muted);
+
       font-size: 0.75rem;
     }
 
     .instruction {
       margin: 0 0 14px;
+
       color: var(--muted);
+
       font-size: 0.75rem;
     }
 
     label {
       display: block;
+
       font-weight: 600;
+
       margin-bottom: 8px;
     }
 
     textarea {
       width: 100%;
+
       min-height: 280px;
+
       border: 1px solid var(--border);
+
       border-radius: 12px;
+
       background: var(--textarea-bg);
+
       padding: 7px;
+
       color: var(--text);
+
       font: inherit;
+
       font-size: 1rem;
+
       resize: vertical;
+
       outline: none;
+
       transition:
         background-color 0.25s ease,
         color 0.25s ease,
@@ -154,14 +194,30 @@
 
     textarea:focus {
       border-color: #6b7280;
-      box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.12);
+
+      box-shadow:
+        0 0 0 3px rgba(107, 114, 128, 0.12);
     }
 
     .toolbar {
       display: flex;
+
       flex-wrap: wrap;
+
       gap: 6px;
-      margin-top: 2px;
+
+      margin-top: 12px;
+
+      align-items: center;
+    }
+
+    .toolbar-group {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 5px;
+
       align-items: center;
     }
 
@@ -172,15 +228,22 @@
 
     button {
       border: 1px solid #737373;
+
       background: var(--button);
+
       color: var(--text);
+
       cursor: pointer;
+
       transition:
         background-color 0.25s ease,
         color 0.25s ease,
         border-color 0.25s ease;
+
       border-radius: 8px;
+
       padding: 5px 7px;
+
       min-height: 20px;
     }
 
@@ -190,34 +253,38 @@
 
     button:disabled {
       opacity: 0.6;
+
       cursor: not-allowed;
     }
 
     select {
       min-height: 44px;
+
       border-radius: 12px;
+
       border: 1px solid #737373;
+
       padding: 0 12px;
+
       background: var(--button);
+
       color: var(--text);
+
       max-width: 100%;
+
       transition:
         background-color 0.25s ease,
         color 0.25s ease,
         border-color 0.25s ease;
     }
 
-    .toolbar-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      align-items: center;
-    }
-
     .status {
       margin-top: 12px;
+
       color: var(--muted);
+
       font-size: 0.75rem;
+
       min-height: 1.5em;
     }
 
@@ -225,7 +292,25 @@
       display: none !important;
     }
 
-    /* Reader/article view */
+
+    /* =========================================================
+       ARTICLE / READER VIEW
+
+       IMPORTANT:
+       Keep the article itself clean and semantic.
+
+       Browser Reader Mode / Edge Immersive Reader should see:
+
+       article
+         header
+           h1
+         section
+           p
+           p
+           p
+
+       Custom controls are OUTSIDE the article.
+       ========================================================= */
 
     main {
       margin-top: 18px;
@@ -233,54 +318,102 @@
 
     article {
       background: var(--article-bg);
+
       border: 1px solid var(--article-border);
+
       border-radius: 18px;
+
       padding: 10px 9px;
+
       box-shadow: var(--shadow);
+
       transition:
         background-color 0.25s ease,
         color 0.25s ease,
         box-shadow 0.25s ease;
     }
 
-    article header {
+    article > header {
       margin-bottom: 14px;
-      border-bottom: 1px solid var(--header-border);
+
+      border-bottom:
+        1px solid var(--header-border);
+
       padding-bottom: 5px;
     }
 
     article h1 {
       margin: 0;
-      font-size: 1.1rem;
-      line-height: 1.25;
-    }
 
-    article .article-meta {
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 0.75rem;
+      font-size: 1.1rem;
+
+      line-height: 1.25;
     }
 
     article p {
       margin: 0 0 1em 0;
+
       font-size: 1rem;
+
       line-height: 1.85;
+
       word-break: break-word;
+
       overflow-wrap: anywhere;
+    }
+
+    /*
+     * The article body itself intentionally has no
+     * display tricks, aria-live, generated content,
+     * or speech-specific markup.
+     */
+    #articleBody {
+      display: block;
+    }
+
+    #articleBody p:last-child {
+      margin-bottom: 0;
+    }
+
+    /*
+     * Metadata is outside the semantic article content.
+     *
+     * This prevents "3 paragraphs / 500 words" from being
+     * interpreted as part of the article.
+     */
+    .article-meta {
+      margin-top: 12px;
+
+      color: var(--muted);
+
+      font-size: 0.75rem;
+    }
+
+    /*
+     * Custom Web Speech controls are explicitly separate
+     * from the semantic article.
+     */
+    #speechControls {
+      margin-top: 12px;
     }
 
     .footer-note {
       margin-top: 14px;
+
       color: var(--muted);
+
       font-size: 0.75rem;
-      justify-content: stretch;      
+
+      justify-content: stretch;
     }
 
-    .top-actions {
-      font-size: 0.75rem;
-    }
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
 
     @media (max-width: 560px) {
+
       .wrapper {
         padding: 6px;
       }
@@ -310,6 +443,11 @@
       }
     }
 
+
+    /* =========================================================
+       COMPACT BUTTONS
+       ========================================================= */
+
     #btnDarkMode,
     #btnConvert,
     #btnClear,
@@ -323,10 +461,17 @@
   </style>
 </head>
 
+
 <body>
+
   <div class="wrapper">
 
+    <!-- =======================================================
+         DARK MODE
+         ======================================================= -->
+
     <div class="top-actions">
+
       <button
         type="button"
         id="btnDarkMode"
@@ -334,18 +479,27 @@
       >
         🌙 Dark Mode
       </button>
+
     </div>
 
-    <!-- Editor view -->
+
+    <!-- =======================================================
+         EDITOR VIEW
+         ======================================================= -->
 
     <section
       id="editorView"
       class="card"
       aria-labelledby="pageTitle"
     >
-      <h1 id="pageTitle" class="title">
+
+      <h1
+        id="pageTitle"
+        class="title"
+      >
         Read Text Aloud
       </h1>
+
       <textarea
         id="textbox1"
         name="textbox1"
@@ -359,8 +513,11 @@ or
 3) Use your browser's Reader Mode / Immersive Reader if available"
       ></textarea>
 
+
       <div class="toolbar">
+
         <div class="toolbar-group">
+
           <button
             type="button"
             id="btnConvert"
@@ -374,45 +531,90 @@ or
           >
             Clear
           </button>
+
         </div>
+
       </div>
+
 
       <p class="footer-note">
         Maintained by: AKindBit
       </p>
+
     </section>
 
-    <!-- Reader/article view -->
+
+    <!-- =======================================================
+         READER VIEW
+
+         NO aria-live on this container.
+
+         The article is allowed to remain a normal document.
+         ======================================================= -->
 
     <main
       id="readerView"
       class="hidden"
-      aria-live="polite"
     >
 
-      <article id="readerArticle">
+
+      <!-- =====================================================
+           SEMANTIC ARTICLE
+
+           Keep this area as ordinary HTML.
+
+           Edge can analyze this article independently of the
+           custom Web Speech controls below it.
+           ===================================================== -->
+
+      <article
+        id="readerArticle"
+      >
 
         <header>
-          <h1 id="articleTitle"></h1>
+
+          <h1 id="articleTitle">
+            Read Text Aloud
+          </h1>
+
         </header>
+
 
         <section
           id="articleBody"
           aria-label="Article content"
-        ></section>
-
-        <div
-          class="article-meta"
-          id="articleMeta"
         >
-          Clean article view for better readability.
-        </div>
+          <!-- Paragraphs are inserted here by JavaScript. -->
+        </section>
 
       </article>
 
+
+      <!-- =====================================================
+           ARTICLE INFORMATION
+
+           Outside <article>, so it is not treated as article
+           content by Reader Mode.
+           ===================================================== -->
+
       <div
+        class="article-meta"
+        id="articleMeta"
+      >
+        Clean article view for better readability.
+      </div>
+
+
+      <!-- =====================================================
+           CUSTOM WEB SPEECH CONTROLS
+
+           These are deliberately OUTSIDE <article>.
+           ===================================================== -->
+
+      <div
+        id="speechControls"
         class="toolbar"
-        aria-label="Reader controls"
+        aria-label="Text to speech controls"
       >
 
         <div class="toolbar-group">
@@ -454,6 +656,7 @@ or
 
         </div>
 
+
         <div class="toolbar-group">
 
           <label
@@ -467,25 +670,35 @@ or
             id="voiceSelect"
             aria-label="Choose voice"
           >
+
             <option value="">
               Default voice
             </option>
+
           </select>
 
         </div>
 
       </div>
 
+
       <div
         id="status"
         class="status"
+        role="status"
+        aria-live="polite"
       ></div>
 
     </main>
+
   </div>
+
 
   <script>
     (function () {
+
+      "use strict";
+
 
       /* =========================================================
          DOM ELEMENTS
@@ -544,55 +757,53 @@ or
 
 
       /* =========================================================
-         SPEECH SYNTHESIS STATE
+         SPEECH SYNTHESIS
          ========================================================= */
 
-      const synth = window.speechSynthesis;
+      const synth =
+        "speechSynthesis" in window
+          ? window.speechSynthesis
+          : null;
 
       let voices = [];
 
-      /*
-       * Keep a reference to the SAME utterance while it is
-       * speaking or paused.
-       */
       let currentUtterance = null;
 
-      /*
-       * Our own application-level speech state.
-       *
-       * Do not rely only on synth.paused because browser
-       * implementations can behave inconsistently.
-       */
       let speechPaused = false;
 
-      /*
-       * Used to distinguish an intentional Stop from an
-       * ordinary speech ending/error.
-       */
       let speechStopped = false;
 
 
       /* =========================================================
-         GENERAL FUNCTIONS
+         GENERAL
          ========================================================= */
 
       function setStatus(message) {
-        statusEl.textContent = message || "";
+
+        statusEl.textContent =
+          message || "";
+
       }
 
 
       function supportsSpeech() {
+
         return (
           "speechSynthesis" in window &&
           "SpeechSynthesisUtterance" in window
         );
+
       }
 
 
       function countWords(text) {
+
         return (
-          text.trim().match(/\S+/g) || []
+          text
+            .trim()
+            .match(/\S+/g) || []
         ).length;
+
       }
 
 
@@ -603,7 +814,9 @@ or
       function updateThemeButton() {
 
         const isDark =
-          document.body.classList.contains("dark-mode");
+          document.body.classList.contains(
+            "dark-mode"
+          );
 
         btnDarkMode.textContent =
           isDark
@@ -612,12 +825,16 @@ or
 
         btnDarkMode.setAttribute(
           "aria-pressed",
-          isDark ? "true" : "false"
+          isDark
+            ? "true"
+            : "false"
         );
 
         themeColorMeta.setAttribute(
           "content",
-          isDark ? "#121212" : "#F1E2C9"
+          isDark
+            ? "#121212"
+            : "#F1E2C9"
         );
       }
 
@@ -625,9 +842,17 @@ or
       function applyTheme(theme) {
 
         if (theme === "dark") {
-          document.body.classList.add("dark-mode");
+
+          document.body.classList.add(
+            "dark-mode"
+          );
+
         } else {
-          document.body.classList.remove("dark-mode");
+
+          document.body.classList.remove(
+            "dark-mode"
+          );
+
         }
 
         updateThemeButton();
@@ -637,19 +862,26 @@ or
       function toggleDarkMode() {
 
         const isDark =
-          document.body.classList.contains("dark-mode");
+          document.body.classList.contains(
+            "dark-mode"
+          );
 
         const nextTheme =
-          isDark ? "light" : "dark";
+          isDark
+            ? "light"
+            : "dark";
 
         applyTheme(nextTheme);
 
         try {
+
           localStorage.setItem(
             "textReaderTheme",
             nextTheme
           );
+
         } catch (e) {}
+
       }
 
 
@@ -658,19 +890,25 @@ or
         let savedTheme = null;
 
         try {
+
           savedTheme =
             localStorage.getItem(
               "textReaderTheme"
             );
+
         } catch (e) {}
 
         if (
           savedTheme === "dark" ||
           savedTheme === "light"
         ) {
+
           applyTheme(savedTheme);
+
         } else {
+
           applyTheme("light");
+
         }
       }
 
@@ -681,26 +919,46 @@ or
 
       function populateVoices() {
 
-        if (!supportsSpeech()) return;
+        if (!supportsSpeech()) {
+          return;
+        }
 
         const freshVoices =
           synth.getVoices() || [];
 
-        voices = freshVoices;
+        voices =
+          freshVoices;
 
         const previousValue =
           voiceSelect.value;
 
         voiceSelect.innerHTML =
-          '<option value="">Default voice</option>';
+          "";
 
-        const seen = new Set();
+        const defaultOption =
+          document.createElement(
+            "option"
+          );
+
+        defaultOption.value = "";
+
+        defaultOption.textContent =
+          "Default voice";
+
+        voiceSelect.appendChild(
+          defaultOption
+        );
+
+        const seen =
+          new Set();
 
         freshVoices.forEach(
-          (voice, index) => {
+          function (voice, index) {
 
             const key =
-              voice.name + "|" + voice.lang;
+              voice.name +
+              "|" +
+              voice.lang;
 
             if (seen.has(key)) {
               return;
@@ -709,256 +967,227 @@ or
             seen.add(key);
 
             const option =
-              document.createElement("option");
+              document.createElement(
+                "option"
+              );
 
-            option.value = String(index);
+            option.value =
+              String(index);
 
             option.textContent =
-              `${voice.name} (${voice.lang})${
+              voice.name +
+              " (" +
+              voice.lang +
+              ")" +
+              (
                 voice.default
                   ? " — default"
                   : ""
-              }`;
+              );
 
-            voiceSelect.appendChild(option);
+            voiceSelect.appendChild(
+              option
+            );
+
           }
         );
+
+
+        /*
+         * Restore the user's previous selection
+         * if that voice still exists.
+         */
 
         if (
           previousValue &&
           voiceSelect.querySelector(
-            `option[value="${previousValue}"]`
+            'option[value="' +
+            CSS.escape(previousValue) +
+            '"]'
           )
         ) {
+
           voiceSelect.value =
             previousValue;
+
         }
-      }
 
-
-      function warmUpSpeech() {
-
-        if (!supportsSpeech()) return;
-
-        populateVoices();
       }
 
 
       function getSelectedVoice() {
 
-        const idx =
+        const value =
           voiceSelect.value;
 
+        if (value === "") {
+          return null;
+        }
+
+        const index =
+          Number(value);
+
         if (
-          idx === "" ||
-          !voices[Number(idx)]
+          !Number.isInteger(index) ||
+          !voices[index]
         ) {
           return null;
         }
 
-        return voices[Number(idx)];
+        return voices[index];
       }
 
 
       /* =========================================================
-         SPEECH CONTROL
-         ========================================================= */
-
-      function stopSpeech() {
-
-        if (!supportsSpeech()) {
-          return;
-        }
-
-        /*
-         * Mark this as an intentional stop BEFORE calling cancel().
-         * cancel() can trigger onend/onerror asynchronously.
-         */
-        speechStopped = true;
-        speechPaused = false;
-
-        /*
-         * Cancel the current speech queue.
-         */
-        synth.cancel();
-
-        /*
-         * Forget the current utterance.
-         */
-        currentUtterance = null;
-      }
-
-
-      function pauseSpeech() {
-
-        if (!supportsSpeech()) {
-          return;
-        }
-
-        /*
-         * We use currentUtterance instead of relying exclusively
-         * on synth.speaking.
-         */
-        if (!currentUtterance) {
-          setStatus(
-            "Nothing is currently being read."
-          );
-          return;
-        }
-
-        /*
-         * Already paused.
-         */
-        if (speechPaused) {
-          setStatus("Already paused.");
-          return;
-        }
-
-        /*
-         * Ask the browser to pause the current utterance.
-         */
-        synth.pause();
-
-        /*
-         * Keep our own state.
-         */
-        speechPaused = true;
-
-        setStatus("Paused.");
-      }
-
-
-      function resumeSpeech() {
-
-        if (!supportsSpeech()) {
-          return;
-        }
-
-        /*
-         * There must still be an utterance to resume.
-         */
-        if (!currentUtterance) {
-          setStatus(
-            "Nothing is paused."
-          );
-          return;
-        }
-
-        /*
-         * If our application knows that the speech was paused,
-         * resume the SAME speech queue.
-         */
-        if (speechPaused) {
-
-          speechStopped = false;
-
-          synth.resume();
-
-          /*
-           * Set this immediately for UI responsiveness.
-           * onresume below also confirms the state.
-           */
-          speechPaused = false;
-
-          setStatus("Resumed.");
-
-          return;
-        }
-
-        /*
-         * Some browsers may not fire/maintain paused state
-         * consistently. If an utterance still exists, attempt
-         * resume anyway.
-         */
-        if (synth.paused) {
-
-          speechStopped = false;
-
-          synth.resume();
-
-          speechPaused = false;
-
-          setStatus("Resumed.");
-
-          return;
-        }
-
-        setStatus(
-          "Speech is not currently paused."
-        );
-      }
-
-
-      /* =========================================================
-         TEXT / ARTICLE FUNCTIONS
+         TEXT → PARAGRAPHS
          ========================================================= */
 
       function textToParagraphs(rawText) {
 
-        return rawText
-          .replace(/\r\n/g, "\n")
-          .replace(/\r/g, "\n")
+        /*
+         * Normalize line endings.
+         */
+
+        const normalized =
+          rawText
+            .replace(/\r\n/g, "\n")
+            .replace(/\r/g, "\n");
+
+
+        /*
+         * A blank line separates paragraphs.
+         */
+
+        return normalized
           .split(/\n\s*\n/)
           .map(
-            part => part.trim()
+            function (part) {
+              return part.trim();
+            }
           )
-          .filter(Boolean);
+          .filter(
+            function (part) {
+              return part.length > 0;
+            }
+          );
+
       }
 
+
+      /* =========================================================
+         BUILD SEMANTIC ARTICLE
+         ========================================================= */
 
       function buildArticleFromText(rawText) {
 
         const paragraphs =
           textToParagraphs(rawText);
 
-        articleBody.innerHTML = "";
+
+        /*
+         * Remove only the dynamically generated paragraph
+         * elements from the article body.
+         *
+         * Do NOT remove article/header structure.
+         */
+
+        while (
+          articleBody.firstChild
+        ) {
+
+          articleBody.removeChild(
+            articleBody.firstChild
+          );
+
+        }
+
+
+        /*
+         * No paragraphs.
+         */
 
         if (!paragraphs.length) {
+
+          articleMeta.textContent =
+            "Clean article view for better readability.";
+
           return 0;
         }
 
+
+        /*
+         * IMPORTANT:
+         *
+         * Every paragraph is inserted.
+         *
+         * There is deliberately NO:
+         *
+         *   if (index === 0) return;
+         *
+         * The first paragraph is therefore preserved.
+         */
+
         paragraphs.forEach(
-          (paragraphText, index) => {
+          function (paragraphText) {
 
             const p =
-              document.createElement("p");
-
-            /*
-             * Preserve your original behavior:
-             * the first paragraph is skipped when there
-             * is more than one paragraph.
-             */
-            if (
-              index === 0 &&
-              paragraphs.length > 1
-            ) {
-              return;
-            }
+              document.createElement(
+                "p"
+              );
 
             p.textContent =
               paragraphText;
 
-            articleBody.appendChild(p);
+            articleBody.appendChild(
+              p
+            );
+
           }
         );
 
-        articleMeta.textContent =
-          `${paragraphs.length} paragraph${
-            paragraphs.length > 1
-              ? "s"
-              : ""
-          } • ${countWords(rawText)} words`;
 
-        return paragraphs.length;
+        const paragraphCount =
+          paragraphs.length;
+
+        const wordCount =
+          countWords(rawText);
+
+
+        articleMeta.textContent =
+          paragraphCount +
+          " paragraph" +
+          (
+            paragraphCount === 1
+              ? ""
+              : "s"
+          ) +
+          " • " +
+          wordCount +
+          " words";
+
+
+        return paragraphCount;
       }
 
 
+      /* =========================================================
+         CONVERT TO ARTICLE
+         ========================================================= */
+
       function convertToArticle() {
 
-        const text =
-          textbox.value.trim();
+        const rawText =
+          textbox.value;
 
-        if (!text) {
+
+        /*
+         * Do not alter the actual text before parsing.
+         *
+         * Only use trim() to determine whether the editor
+         * is empty.
+         */
+
+        if (!rawText.trim()) {
 
           alert(
             "Please enter or paste some text first."
@@ -969,8 +1198,26 @@ or
           return;
         }
 
+
         const paragraphCount =
-          buildArticleFromText(text);
+          buildArticleFromText(
+            rawText
+          );
+
+
+        /*
+         * Give the article a meaningful heading.
+         *
+         * This is important for semantic document structure.
+         */
+
+        articleTitle.textContent =
+          "Read Text Aloud";
+
+
+        /*
+         * Show article.
+         */
 
         editorView.classList.add(
           "hidden"
@@ -980,40 +1227,167 @@ or
           "hidden"
         );
 
+
         setStatus(
-          `Converted to article view with ${
-            paragraphCount
-          } paragraph${
-            paragraphCount > 1
-              ? "s"
-              : ""
-          }.`
+          "Article ready. You can use Edge Reader Mode / Read Aloud or the custom Read Aloud button."
         );
+
+
+        /*
+         * Scroll to the beginning of the document.
+         *
+         * The article remains ordinary DOM content.
+         */
 
         window.scrollTo({
           top: 0,
           behavior: "smooth"
         });
+
       }
 
 
       /* =========================================================
-         READ ALOUD
+         STOP SPEECH
          ========================================================= */
 
-      function speakTextFromArticle() {
+      function stopSpeech() {
 
-        const text =
-          textbox.value.trim();
+        if (!supportsSpeech()) {
+          return;
+        }
 
-        if (!text) {
+
+        /*
+         * Set this BEFORE cancel().
+         *
+         * Browser speech events can arrive after cancel().
+         */
+
+        speechStopped =
+          true;
+
+        speechPaused =
+          false;
+
+
+        synth.cancel();
+
+
+        currentUtterance =
+          null;
+
+      }
+
+
+      /* =========================================================
+         PAUSE
+         ========================================================= */
+
+      function pauseSpeech() {
+
+        if (!supportsSpeech()) {
 
           setStatus(
-            "No text available to read."
+            "Speech synthesis is not available in this browser."
           );
 
           return;
         }
+
+
+        if (!currentUtterance) {
+
+          setStatus(
+            "Nothing is currently being read."
+          );
+
+          return;
+        }
+
+
+        if (speechPaused) {
+
+          setStatus(
+            "Already paused."
+          );
+
+          return;
+        }
+
+
+        /*
+         * Pause the browser speech engine.
+         */
+
+        synth.pause();
+
+
+        speechPaused =
+          true;
+
+
+        setStatus(
+          "Paused."
+        );
+
+      }
+
+
+      /* =========================================================
+         RESUME
+         ========================================================= */
+
+      function resumeSpeech() {
+
+        if (!supportsSpeech()) {
+          return;
+        }
+
+
+        if (!currentUtterance) {
+
+          setStatus(
+            "Nothing is paused."
+          );
+
+          return;
+        }
+
+
+        if (
+          speechPaused ||
+          synth.paused
+        ) {
+
+          speechStopped =
+            false;
+
+          synth.resume();
+
+          speechPaused =
+            false;
+
+          setStatus(
+            "Resumed."
+          );
+
+          return;
+        }
+
+
+        setStatus(
+          "Speech is not currently paused."
+        );
+
+      }
+
+
+      /* =========================================================
+         CUSTOM WEB SPEECH — READ
+         ========================================================= */
+
+      function speakTextFromArticle() {
 
         if (!supportsSpeech()) {
 
@@ -1024,45 +1398,78 @@ or
           return;
         }
 
+
         /*
-         * Cancel anything already speaking.
+         * IMPORTANT:
+         *
+         * Read from the SEMANTIC ARTICLE, not from the
+         * textarea.
+         *
+         * This means the custom reader follows exactly
+         * what the user sees in the article.
          */
+
+        const text =
+          articleBody.innerText.trim();
+
+
+        if (!text) {
+
+          setStatus(
+            "No article text is available to read."
+          );
+
+          return;
+        }
+
+
+        /*
+         * Stop any previous speech.
+         */
+
+        speechStopped =
+          true;
+
+        speechPaused =
+          false;
+
         synth.cancel();
 
-        /*
-         * Reset application speech state.
-         */
-        currentUtterance = null;
-        speechPaused = false;
-        speechStopped = false;
 
         /*
-         * Refresh available voices.
+         * Reset stop state for this new utterance.
          */
+
+        speechStopped =
+          false;
+
+
+        /*
+         * Refresh voices.
+         */
+
         populateVoices();
+
 
         /*
          * Create ONE utterance.
-         *
-         * This exact object remains referenced by
-         * currentUtterance until speech ends.
          */
+
         const utterance =
-          new SpeechSynthesisUtterance(text);
+          new SpeechSynthesisUtterance(
+            text
+          );
+
 
         const selectedVoice =
           getSelectedVoice();
+
 
         if (selectedVoice) {
 
           utterance.voice =
             selectedVoice;
 
-          /*
-           * Use the selected voice's language.
-           * This is particularly important when selecting
-           * Khmer or another non-English voice.
-           */
           utterance.lang =
             selectedVoice.lang ||
             "en-US";
@@ -1070,145 +1477,200 @@ or
         } else {
 
           /*
-           * Do not force "en" if the user has selected
-           * no voice. Let the browser use its default.
+           * Do not force English if the user has not
+           * selected a voice.
+           *
+           * Let the browser choose its default.
            */
+
           utterance.lang =
             document.documentElement.lang ||
             "en";
+
         }
 
-        utterance.rate = 1;
-        utterance.pitch = 1;
-        utterance.volume = 1;
+
+        utterance.rate =
+          1;
+
+        utterance.pitch =
+          1;
+
+        utterance.volume =
+          1;
 
 
-        /* -------------------------------------------------------
+        /*
+         * Store the SAME utterance before speak().
+         */
+
+        currentUtterance =
+          utterance;
+
+
+        /* =====================================================
            SPEECH EVENTS
-           ------------------------------------------------------- */
+           ===================================================== */
 
         utterance.onstart =
           function () {
 
-            if (!speechStopped) {
-
-              speechPaused = false;
-
-              setStatus(
-                "Reading aloud..."
-              );
+            if (
+              currentUtterance !==
+              utterance
+            ) {
+              return;
             }
+
+            if (speechStopped) {
+              return;
+            }
+
+            speechPaused =
+              false;
+
+            setStatus(
+              "Reading aloud..."
+            );
+
           };
 
 
         utterance.onpause =
           function () {
 
-            /*
-             * Browser confirms that speech is paused.
-             */
-            speechPaused = true;
+            if (
+              currentUtterance !==
+              utterance
+            ) {
+              return;
+            }
+
+            speechPaused =
+              true;
 
             if (!speechStopped) {
-              setStatus("Paused.");
+
+              setStatus(
+                "Paused."
+              );
+
             }
+
           };
 
 
         utterance.onresume =
           function () {
 
-            /*
-             * Browser confirms that speech resumed.
-             */
-            speechPaused = false;
+            if (
+              currentUtterance !==
+              utterance
+            ) {
+              return;
+            }
+
+            speechPaused =
+              false;
 
             if (!speechStopped) {
+
               setStatus(
                 "Reading aloud..."
               );
+
             }
+
           };
 
 
         utterance.onend =
           function () {
 
-            /*
-             * Speech completed normally.
-             */
-            speechPaused = false;
+            if (
+              currentUtterance !==
+              utterance
+            ) {
+              return;
+            }
+
+            speechPaused =
+              false;
 
             if (!speechStopped) {
 
               setStatus(
                 "Finished reading."
               );
+
             }
 
-            currentUtterance = null;
+            currentUtterance =
+              null;
+
           };
 
 
         utterance.onerror =
           function (event) {
 
-            speechPaused = false;
+            if (
+              currentUtterance !==
+              utterance
+            ) {
+              return;
+            }
+
+            speechPaused =
+              false;
+
 
             if (!speechStopped) {
 
               const error =
-                event && event.error
+                event &&
+                event.error
                   ? event.error
                   : "unknown error";
 
               setStatus(
-                "Speech error: " + error
+                "Speech error: " +
+                error
               );
+
             }
 
-            currentUtterance = null;
+
+            currentUtterance =
+              null;
+
           };
 
 
-        /*
-         * IMPORTANT:
-         * Store the SAME utterance before speaking.
-         */
-        currentUtterance =
-          utterance;
+        /* =====================================================
+           IMPORTANT:
 
+           NO setTimeout().
+           NO delayed speak().
 
-        /*
-         * A short delay after cancel() improves reliability
-         * in some browsers, especially when restarting speech.
-         */
-        setTimeout(
-          function () {
+           Call speak() directly.
+           ===================================================== */
 
-            if (
-              currentUtterance === utterance &&
-              !speechStopped
-            ) {
-
-              synth.speak(
-                utterance
-              );
-            }
-
-          },
-          50
+        synth.speak(
+          utterance
         );
+
       }
 
 
       /* =========================================================
-         NAVIGATION
+         RETURN TO EDITOR
          ========================================================= */
 
       function goBackToEdit() {
 
         stopSpeech();
+
 
         readerView.classList.add(
           "hidden"
@@ -1218,37 +1680,61 @@ or
           "hidden"
         );
 
+
         setStatus("");
 
+
         textbox.focus();
+
       }
 
+
+      /* =========================================================
+         CLEAR
+         ========================================================= */
 
       function clearAll() {
 
         stopSpeech();
 
-        textbox.value = "";
 
-        articleBody.innerHTML = "";
+        textbox.value =
+          "";
 
-        articleTitle.textContent = "";
+
+        while (
+          articleBody.firstChild
+        ) {
+
+          articleBody.removeChild(
+            articleBody.firstChild
+          );
+
+        }
+
+
+        articleTitle.textContent =
+          "Read Text Aloud";
+
 
         articleMeta.textContent =
           "Clean article view for better readability.";
 
+
         setStatus("");
 
-        if (
-          readerView &&
-          !readerView.classList.contains(
-            "hidden"
-          )
-        ) {
-          goBackToEdit();
-        }
+
+        readerView.classList.add(
+          "hidden"
+        );
+
+        editorView.classList.remove(
+          "hidden"
+        );
+
 
         textbox.focus();
+
       }
 
 
@@ -1261,25 +1747,30 @@ or
         convertToArticle
       );
 
+
       btnClear.addEventListener(
         "click",
         clearAll
       );
+
 
       btnRead.addEventListener(
         "click",
         speakTextFromArticle
       );
 
+
       btnPause.addEventListener(
         "click",
         pauseSpeech
       );
 
+
       btnResume.addEventListener(
         "click",
         resumeSpeech
       );
+
 
       btnStop.addEventListener(
         "click",
@@ -1287,14 +1778,19 @@ or
 
           stopSpeech();
 
-          setStatus("Stopped.");
+          setStatus(
+            "Stopped."
+          );
+
         }
       );
+
 
       btnEdit.addEventListener(
         "click",
         goBackToEdit
       );
+
 
       btnDarkMode.addEventListener(
         "click",
@@ -1303,50 +1799,66 @@ or
 
 
       /* =========================================================
-         INITIALIZATION
+         VOICE INITIALIZATION
          ========================================================= */
-
-      warmUpSpeech();
 
       if (supportsSpeech()) {
 
         populateVoices();
 
+
         /*
-         * Voices are often loaded asynchronously by the browser.
+         * Voices can become available after page load.
          */
-        if ("onvoiceschanged" in synth) {
+
+        if (
+          "onvoiceschanged" in synth
+        ) {
 
           synth.onvoiceschanged =
             populateVoices;
+
         }
+
       }
 
 
       /* =========================================================
-         CTRL/CMD + ENTER
+         CTRL / CMD + ENTER
          ========================================================= */
 
       textbox.addEventListener(
         "keydown",
         function (event) {
 
-          const isMac =
+          const platform =
             navigator.platform
-              .toUpperCase()
-              .indexOf("MAC") >= 0;
+              .toUpperCase();
+
+
+          const isMac =
+            platform.indexOf(
+              "MAC"
+            ) >= 0;
+
+
+          const modifier =
+            isMac
+              ? event.metaKey
+              : event.ctrlKey;
+
 
           if (
-            (isMac
-              ? event.metaKey
-              : event.ctrlKey) &&
+            modifier &&
             event.key === "Enter"
           ) {
 
             event.preventDefault();
 
             convertToArticle();
+
           }
+
         }
       );
 
@@ -1359,6 +1871,7 @@ or
 
     })();
   </script>
+
 </body>
 </html>
 
