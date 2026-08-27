@@ -9,13 +9,19 @@
     name="description"
     content="Paste text, convert it to a clean article view, then use browser Reader Mode or built-in Read Aloud."
   />
-  <meta name="keywords" content="read aloud, reader mode, immersive reader, text to speech, iOS, GitHub Pages" />
+  <meta
+    name="keywords"
+    content="read aloud, reader mode, immersive reader, text to speech, iOS, GitHub Pages"
+  />
   <meta name="theme-color" content="#F1E2C9" id="themeColorMeta" />
 
   <title>Text Read Aloud</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Noto+Sans"
+  />
 
   <style>
     :root {
@@ -54,13 +60,13 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       background: var(--bg);
       color: var(--text);
       font-family:
-        "Noto Sans Khmer",
         "Noto Sans Khmer",
         "Khmer OS System",
         "Noto Sans",
@@ -70,7 +76,9 @@
         "Microsoft Yahei",
         serif;
       -webkit-text-size-adjust: 100%;
-      transition: background-color 0.25s ease, color 0.25s ease;
+      transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
     }
 
     body {
@@ -80,14 +88,14 @@
 
     .wrapper {
       margin: 0 auto;
-      padding: 16px;
+      padding: 8px;
       padding-bottom: 40px;
     }
 
     .top-actions {
       display: flex;
       justify-content: flex-end;
-      margin-bottom: 12px;
+      margin: 6px;
     }
 
     .card {
@@ -95,26 +103,29 @@
       border: 1px solid rgba(0,0,0,0.08);
       border-radius: 16px;
       box-shadow: var(--shadow);
-      padding: 16px;
-      transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+      padding: 8px;
+      transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
     }
 
     .title {
       margin: 0 0 6px;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       line-height: 1.2;
     }
 
     .subtitle {
       margin: 0 0 14px;
       color: var(--muted);
-      font-size: 0.98rem;
+      font-size: 0.75rem;
     }
 
     .instruction {
       margin: 0 0 14px;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.75rem;
     }
 
     label {
@@ -129,13 +140,16 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       background: var(--textarea-bg);
-      padding: 14px;
+      padding: 7px;
       color: var(--text);
       font: inherit;
       font-size: 1rem;
       resize: vertical;
       outline: none;
-      transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
     }
 
     textarea:focus {
@@ -146,8 +160,8 @@
     .toolbar {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
+      gap: 6px;
+      margin-top: 2px;
       align-items: center;
     }
 
@@ -160,11 +174,14 @@
       border: 1px solid #737373;
       background: var(--button);
       color: var(--text);
-      border-radius: 12px;
-      padding: 10px 14px;
       cursor: pointer;
-      min-height: 44px; /* touch-friendly */
-      transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+      border-radius: 8px;
+      padding: 5px 7px;
+      min-height: 20px;
     }
 
     button:hover {
@@ -184,20 +201,23 @@
       background: var(--button);
       color: var(--text);
       max-width: 100%;
-      transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
     }
 
     .toolbar-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 5px;
       align-items: center;
     }
 
     .status {
       margin-top: 12px;
       color: var(--muted);
-      font-size: 0.94rem;
+      font-size: 0.75rem;
       min-height: 1.5em;
     }
 
@@ -206,6 +226,7 @@
     }
 
     /* Reader/article view */
+
     main {
       margin-top: 18px;
     }
@@ -214,32 +235,35 @@
       background: var(--article-bg);
       border: 1px solid var(--article-border);
       border-radius: 18px;
-      padding: 22px 18px;
+      padding: 10px 9px;
       box-shadow: var(--shadow);
-      transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+      transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
     }
 
     article header {
       margin-bottom: 14px;
       border-bottom: 1px solid var(--header-border);
-      padding-bottom: 10px;
+      padding-bottom: 5px;
     }
 
     article h1 {
       margin: 0;
-      font-size: 1.8rem;
+      font-size: 1.1rem;
       line-height: 1.25;
     }
 
     article .article-meta {
       margin-top: 6px;
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 0.75rem;
     }
 
     article p {
       margin: 0 0 1em 0;
-      font-size: 1.08rem;
+      font-size: 1rem;
       line-height: 1.85;
       word-break: break-word;
       overflow-wrap: anywhere;
@@ -248,24 +272,29 @@
     .footer-note {
       margin-top: 14px;
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 0.75rem;
+      justify-content: stretch;      
+    }
+
+    .top-actions {
+      font-size: 0.75rem;
     }
 
     @media (max-width: 560px) {
       .wrapper {
-        padding: 12px;
+        padding: 6px;
       }
 
       .title {
-        font-size: 1.35rem;
+        font-size: 1.1rem;
       }
 
       article h1 {
-        font-size: 1.45rem;
+        font-size: 1.1rem;
       }
 
       article p {
-        font-size: 1.04rem;
+        font-size: 1rem;
       }
 
       textarea {
@@ -280,26 +309,43 @@
         width: 100%;
       }
     }
+
+    #btnDarkMode,
+    #btnConvert,
+    #btnClear,
+    #btnRead,
+    #btnPause,
+    #btnResume,
+    #btnStop,
+    #btnEdit {
+      padding: 3px !important;
+    }
   </style>
 </head>
+
 <body>
   <div class="wrapper">
+
     <div class="top-actions">
-      <button type="button" id="btnDarkMode" aria-pressed="false">🌙 Dark Mode</button>
+      <button
+        type="button"
+        id="btnDarkMode"
+        aria-pressed="false"
+      >
+        🌙 Dark Mode
+      </button>
     </div>
 
     <!-- Editor view -->
-    <section id="editorView" class="card" aria-labelledby="pageTitle">
-      <h1 id="pageTitle" class="title">Text Read Aloud</h1>
-      <p class="subtitle">
-        Paste text, convert it into a clean article, then use your browser’s Reader Mode if available or the built-in Read Aloud button.
-      </p>
 
-      <p class="instruction" id="instruction">
-        Tip: This helps convert your text into a clean article makes the page much more reader-friendly. Built-in speech uses the browser’s speech synthesis where supported.
-      </p>
-
-      <label for="textbox1">Text to read</label>
+    <section
+      id="editorView"
+      class="card"
+      aria-labelledby="pageTitle"
+    >
+      <h1 id="pageTitle" class="title">
+        Read Text Aloud
+      </h1>
       <textarea
         id="textbox1"
         name="textbox1"
@@ -315,351 +361,1006 @@ or
 
       <div class="toolbar">
         <div class="toolbar-group">
-          <button type="button" id="btnConvert">Convert to Article</button>
-          <button type="button" id="btnClear">Clear</button>
+          <button
+            type="button"
+            id="btnConvert"
+          >
+            Convert to Article
+          </button>
+
+          <button
+            type="button"
+            id="btnClear"
+          >
+            Clear
+          </button>
         </div>
       </div>
 
       <p class="footer-note">
-        This page uses plain HTML, CSS, and JavaScript, making it suitable for static hosting such as GitHub Pages.
+        Maintained by: AKindBit
       </p>
     </section>
 
     <!-- Reader/article view -->
-    <main id="readerView" class="hidden" aria-live="polite">
-      
+
+    <main
+      id="readerView"
+      class="hidden"
+      aria-live="polite"
+    >
+
       <article id="readerArticle">
+
         <header>
           <h1 id="articleTitle"></h1>
         </header>
 
-        <section id="articleBody" aria-label="Article content"></section>
-        <div class="article-meta" id="articleMeta">
-            Clean article view for better readability.
-          </div>
+        <section
+          id="articleBody"
+          aria-label="Article content"
+        ></section>
+
+        <div
+          class="article-meta"
+          id="articleMeta"
+        >
+          Clean article view for better readability.
+        </div>
+
       </article>
-      
-      <div class="toolbar" aria-label="Reader controls">
+
+      <div
+        class="toolbar"
+        aria-label="Reader controls"
+      >
+
         <div class="toolbar-group">
-          <button type="button" id="btnRead">Read Aloud</button>
-          <button type="button" id="btnPause">Pause</button>
-          <button type="button" id="btnResume">Resume</button>
-          <button type="button" id="btnStop">Stop</button>
-          <button type="button" id="btnEdit">Edit Text</button>
+
+          <button
+            type="button"
+            id="btnRead"
+          >
+            Read Aloud
+          </button>
+
+          <button
+            type="button"
+            id="btnPause"
+          >
+            Pause
+          </button>
+
+          <button
+            type="button"
+            id="btnResume"
+          >
+            Resume
+          </button>
+
+          <button
+            type="button"
+            id="btnStop"
+          >
+            Stop
+          </button>
+
+          <button
+            type="button"
+            id="btnEdit"
+          >
+            Edit Text
+          </button>
+
         </div>
 
         <div class="toolbar-group">
-          <label for="voiceSelect" class="hidden">Voice</label>
-          <select id="voiceSelect" aria-label="Choose voice">
-            <option value="">Default voice</option>
+
+          <label
+            for="voiceSelect"
+            class="hidden"
+          >
+            Voice
+          </label>
+
+          <select
+            id="voiceSelect"
+            aria-label="Choose voice"
+          >
+            <option value="">
+              Default voice
+            </option>
           </select>
+
         </div>
+
       </div>
 
-      <div id="status" class="status"></div>
+      <div
+        id="status"
+        class="status"
+      ></div>
 
     </main>
   </div>
 
   <script>
     (function () {
-      const editorView = document.getElementById("editorView");
-      const readerView = document.getElementById("readerView");
-      const textbox = document.getElementById("textbox1");
-      const articleTitle = document.getElementById("articleTitle");
-      const articleBody = document.getElementById("articleBody");
-      const articleMeta = document.getElementById("articleMeta");
-      const statusEl = document.getElementById("status");
-      const themeColorMeta = document.getElementById("themeColorMeta");
 
-      const btnConvert = document.getElementById("btnConvert");
-      const btnClear = document.getElementById("btnClear");
-      const btnRead = document.getElementById("btnRead");
-      const btnPause = document.getElementById("btnPause");
-      const btnResume = document.getElementById("btnResume");
-      const btnStop = document.getElementById("btnStop");
-      const btnEdit = document.getElementById("btnEdit");
-      const btnDarkMode = document.getElementById("btnDarkMode");
-      const voiceSelect = document.getElementById("voiceSelect");
+      /* =========================================================
+         DOM ELEMENTS
+         ========================================================= */
+
+      const editorView =
+        document.getElementById("editorView");
+
+      const readerView =
+        document.getElementById("readerView");
+
+      const textbox =
+        document.getElementById("textbox1");
+
+      const articleTitle =
+        document.getElementById("articleTitle");
+
+      const articleBody =
+        document.getElementById("articleBody");
+
+      const articleMeta =
+        document.getElementById("articleMeta");
+
+      const statusEl =
+        document.getElementById("status");
+
+      const themeColorMeta =
+        document.getElementById("themeColorMeta");
+
+      const btnConvert =
+        document.getElementById("btnConvert");
+
+      const btnClear =
+        document.getElementById("btnClear");
+
+      const btnRead =
+        document.getElementById("btnRead");
+
+      const btnPause =
+        document.getElementById("btnPause");
+
+      const btnResume =
+        document.getElementById("btnResume");
+
+      const btnStop =
+        document.getElementById("btnStop");
+
+      const btnEdit =
+        document.getElementById("btnEdit");
+
+      const btnDarkMode =
+        document.getElementById("btnDarkMode");
+
+      const voiceSelect =
+        document.getElementById("voiceSelect");
+
+
+      /* =========================================================
+         SPEECH SYNTHESIS STATE
+         ========================================================= */
 
       const synth = window.speechSynthesis;
+
       let voices = [];
+
+      /*
+       * Keep a reference to the SAME utterance while it is
+       * speaking or paused.
+       */
       let currentUtterance = null;
+
+      /*
+       * Our own application-level speech state.
+       *
+       * Do not rely only on synth.paused because browser
+       * implementations can behave inconsistently.
+       */
+      let speechPaused = false;
+
+      /*
+       * Used to distinguish an intentional Stop from an
+       * ordinary speech ending/error.
+       */
+      let speechStopped = false;
+
+
+      /* =========================================================
+         GENERAL FUNCTIONS
+         ========================================================= */
 
       function setStatus(message) {
         statusEl.textContent = message || "";
       }
 
+
       function supportsSpeech() {
-        return "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+        return (
+          "speechSynthesis" in window &&
+          "SpeechSynthesisUtterance" in window
+        );
       }
+
 
       function countWords(text) {
-        return (text.trim().match(/\S+/g) || []).length;
+        return (
+          text.trim().match(/\S+/g) || []
+        ).length;
       }
+
+
+      /* =========================================================
+         DARK MODE
+         ========================================================= */
 
       function updateThemeButton() {
-        const isDark = document.body.classList.contains("dark-mode");
-        btnDarkMode.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
-        btnDarkMode.setAttribute("aria-pressed", isDark ? "true" : "false");
-        themeColorMeta.setAttribute("content", isDark ? "#121212" : "#F1E2C9");
+
+        const isDark =
+          document.body.classList.contains("dark-mode");
+
+        btnDarkMode.textContent =
+          isDark
+            ? "☀️ Light Mode"
+            : "🌙 Dark Mode";
+
+        btnDarkMode.setAttribute(
+          "aria-pressed",
+          isDark ? "true" : "false"
+        );
+
+        themeColorMeta.setAttribute(
+          "content",
+          isDark ? "#121212" : "#F1E2C9"
+        );
       }
 
+
       function applyTheme(theme) {
+
         if (theme === "dark") {
           document.body.classList.add("dark-mode");
         } else {
           document.body.classList.remove("dark-mode");
         }
+
         updateThemeButton();
       }
 
+
       function toggleDarkMode() {
-        const isDark = document.body.classList.contains("dark-mode");
-        const nextTheme = isDark ? "light" : "dark";
+
+        const isDark =
+          document.body.classList.contains("dark-mode");
+
+        const nextTheme =
+          isDark ? "light" : "dark";
+
         applyTheme(nextTheme);
+
         try {
-          localStorage.setItem("textReaderTheme", nextTheme);
+          localStorage.setItem(
+            "textReaderTheme",
+            nextTheme
+          );
         } catch (e) {}
       }
 
+
       function loadSavedTheme() {
+
         let savedTheme = null;
+
         try {
-          savedTheme = localStorage.getItem("textReaderTheme");
+          savedTheme =
+            localStorage.getItem(
+              "textReaderTheme"
+            );
         } catch (e) {}
 
-        if (savedTheme === "dark" || savedTheme === "light") {
+        if (
+          savedTheme === "dark" ||
+          savedTheme === "light"
+        ) {
           applyTheme(savedTheme);
         } else {
           applyTheme("light");
         }
       }
 
+
+      /* =========================================================
+         VOICE MANAGEMENT
+         ========================================================= */
+
       function populateVoices() {
+
         if (!supportsSpeech()) return;
 
-        const freshVoices = synth.getVoices() || [];
+        const freshVoices =
+          synth.getVoices() || [];
+
         voices = freshVoices;
 
-        const previousValue = voiceSelect.value;
-        voiceSelect.innerHTML = '<option value="">Default voice</option>';
+        const previousValue =
+          voiceSelect.value;
+
+        voiceSelect.innerHTML =
+          '<option value="">Default voice</option>';
 
         const seen = new Set();
-        freshVoices.forEach((voice, index) => {
-          const key = voice.name + "|" + voice.lang;
-          if (seen.has(key)) return;
-          seen.add(key);
 
-          const option = document.createElement("option");
-          option.value = String(index);
-          option.textContent = `${voice.name} (${voice.lang})${voice.default ? " — default" : ""}`;
-          voiceSelect.appendChild(option);
-        });
+        freshVoices.forEach(
+          (voice, index) => {
 
-        if (previousValue && voiceSelect.querySelector(`option[value="${previousValue}"]`)) {
-          voiceSelect.value = previousValue;
+            const key =
+              voice.name + "|" + voice.lang;
+
+            if (seen.has(key)) {
+              return;
+            }
+
+            seen.add(key);
+
+            const option =
+              document.createElement("option");
+
+            option.value = String(index);
+
+            option.textContent =
+              `${voice.name} (${voice.lang})${
+                voice.default
+                  ? " — default"
+                  : ""
+              }`;
+
+            voiceSelect.appendChild(option);
+          }
+        );
+
+        if (
+          previousValue &&
+          voiceSelect.querySelector(
+            `option[value="${previousValue}"]`
+          )
+        ) {
+          voiceSelect.value =
+            previousValue;
         }
       }
 
+
       function warmUpSpeech() {
+
         if (!supportsSpeech()) return;
+
         populateVoices();
       }
 
+
       function getSelectedVoice() {
-        const idx = voiceSelect.value;
-        if (idx === "" || !voices[Number(idx)]) return null;
+
+        const idx =
+          voiceSelect.value;
+
+        if (
+          idx === "" ||
+          !voices[Number(idx)]
+        ) {
+          return null;
+        }
+
         return voices[Number(idx)];
       }
 
+
+      /* =========================================================
+         SPEECH CONTROL
+         ========================================================= */
+
       function stopSpeech() {
-        if (!supportsSpeech()) return;
+
+        if (!supportsSpeech()) {
+          return;
+        }
+
+        /*
+         * Mark this as an intentional stop BEFORE calling cancel().
+         * cancel() can trigger onend/onerror asynchronously.
+         */
+        speechStopped = true;
+        speechPaused = false;
+
+        /*
+         * Cancel the current speech queue.
+         */
         synth.cancel();
+
+        /*
+         * Forget the current utterance.
+         */
         currentUtterance = null;
       }
 
+
       function pauseSpeech() {
-        if (!supportsSpeech()) return;
-        if (synth.speaking && !synth.paused) {
-          synth.pause();
-          setStatus("Paused.");
+
+        if (!supportsSpeech()) {
+          return;
         }
+
+        /*
+         * We use currentUtterance instead of relying exclusively
+         * on synth.speaking.
+         */
+        if (!currentUtterance) {
+          setStatus(
+            "Nothing is currently being read."
+          );
+          return;
+        }
+
+        /*
+         * Already paused.
+         */
+        if (speechPaused) {
+          setStatus("Already paused.");
+          return;
+        }
+
+        /*
+         * Ask the browser to pause the current utterance.
+         */
+        synth.pause();
+
+        /*
+         * Keep our own state.
+         */
+        speechPaused = true;
+
+        setStatus("Paused.");
       }
+
 
       function resumeSpeech() {
-        if (!supportsSpeech()) return;
-        if (synth.paused) {
-          synth.resume();
-          setStatus("Resumed.");
+
+        if (!supportsSpeech()) {
+          return;
         }
+
+        /*
+         * There must still be an utterance to resume.
+         */
+        if (!currentUtterance) {
+          setStatus(
+            "Nothing is paused."
+          );
+          return;
+        }
+
+        /*
+         * If our application knows that the speech was paused,
+         * resume the SAME speech queue.
+         */
+        if (speechPaused) {
+
+          speechStopped = false;
+
+          synth.resume();
+
+          /*
+           * Set this immediately for UI responsiveness.
+           * onresume below also confirms the state.
+           */
+          speechPaused = false;
+
+          setStatus("Resumed.");
+
+          return;
+        }
+
+        /*
+         * Some browsers may not fire/maintain paused state
+         * consistently. If an utterance still exists, attempt
+         * resume anyway.
+         */
+        if (synth.paused) {
+
+          speechStopped = false;
+
+          synth.resume();
+
+          speechPaused = false;
+
+          setStatus("Resumed.");
+
+          return;
+        }
+
+        setStatus(
+          "Speech is not currently paused."
+        );
       }
 
+
+      /* =========================================================
+         TEXT / ARTICLE FUNCTIONS
+         ========================================================= */
+
       function textToParagraphs(rawText) {
+
         return rawText
           .replace(/\r\n/g, "\n")
           .replace(/\r/g, "\n")
           .split(/\n\s*\n/)
-          .map(part => part.trim())
+          .map(
+            part => part.trim()
+          )
           .filter(Boolean);
       }
 
+
       function buildArticleFromText(rawText) {
-        const paragraphs = textToParagraphs(rawText);
+
+        const paragraphs =
+          textToParagraphs(rawText);
+
         articleBody.innerHTML = "";
 
-        if (!paragraphs.length) return 0;
+        if (!paragraphs.length) {
+          return 0;
+        }
 
-        // let detectedTitle = "";
-        // if (paragraphs.length > 0 && paragraphs[0].length <= 120) {
-        //   detectedTitle = paragraphs[0];
-        // }
+        paragraphs.forEach(
+          (paragraphText, index) => {
 
-        // articleTitle.textContent = detectedTitle;
+            const p =
+              document.createElement("p");
 
-        paragraphs.forEach((paragraphText, index) => {
-          const p = document.createElement("p");
+            /*
+             * Preserve your original behavior:
+             * the first paragraph is skipped when there
+             * is more than one paragraph.
+             */
+            if (
+              index === 0 &&
+              paragraphs.length > 1
+            ) {
+              return;
+            }
 
-          if (index === 0 
-          // && paragraphText === detectedTitle 
-          && paragraphs.length > 1) {
-            return;
+            p.textContent =
+              paragraphText;
+
+            articleBody.appendChild(p);
           }
-
-          p.textContent = paragraphText;
-          articleBody.appendChild(p);
-        });
+        );
 
         articleMeta.textContent =
-          `${paragraphs.length} paragraph${paragraphs.length > 1 ? "s" : ""} • ${countWords(rawText)} words`;
+          `${paragraphs.length} paragraph${
+            paragraphs.length > 1
+              ? "s"
+              : ""
+          } • ${countWords(rawText)} words`;
 
         return paragraphs.length;
       }
 
+
       function convertToArticle() {
-        const text = textbox.value.trim();
+
+        const text =
+          textbox.value.trim();
 
         if (!text) {
-          alert("Please enter or paste some text first.");
+
+          alert(
+            "Please enter or paste some text first."
+          );
+
           textbox.focus();
+
           return;
         }
 
-        const paragraphCount = buildArticleFromText(text);
+        const paragraphCount =
+          buildArticleFromText(text);
 
-        editorView.classList.add("hidden");
-        readerView.classList.remove("hidden");
-
-        setStatus(
-          `Converted to article view with ${paragraphCount} paragraph${paragraphCount > 1 ? "s" : ""}.`
+        editorView.classList.add(
+          "hidden"
         );
 
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        readerView.classList.remove(
+          "hidden"
+        );
+
+        setStatus(
+          `Converted to article view with ${
+            paragraphCount
+          } paragraph${
+            paragraphCount > 1
+              ? "s"
+              : ""
+          }.`
+        );
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
       }
 
+
+      /* =========================================================
+         READ ALOUD
+         ========================================================= */
+
       function speakTextFromArticle() {
-        const text = textbox.value.trim();
+
+        const text =
+          textbox.value.trim();
 
         if (!text) {
-          setStatus("No text available to read.");
+
+          setStatus(
+            "No text available to read."
+          );
+
           return;
         }
 
         if (!supportsSpeech()) {
-          setStatus("This browser does not support built-in speech synthesis.");
+
+          setStatus(
+            "This browser does not support built-in speech synthesis."
+          );
+
           return;
         }
 
-        stopSpeech();
+        /*
+         * Cancel anything already speaking.
+         */
+        synth.cancel();
+
+        /*
+         * Reset application speech state.
+         */
+        currentUtterance = null;
+        speechPaused = false;
+        speechStopped = false;
+
+        /*
+         * Refresh available voices.
+         */
         populateVoices();
 
-        const utterance = new SpeechSynthesisUtterance(text);
-        const selectedVoice = getSelectedVoice();
+        /*
+         * Create ONE utterance.
+         *
+         * This exact object remains referenced by
+         * currentUtterance until speech ends.
+         */
+        const utterance =
+          new SpeechSynthesisUtterance(text);
+
+        const selectedVoice =
+          getSelectedVoice();
 
         if (selectedVoice) {
-          utterance.voice = selectedVoice;
-          utterance.lang = selectedVoice.lang || document.documentElement.lang || "en";
+
+          utterance.voice =
+            selectedVoice;
+
+          /*
+           * Use the selected voice's language.
+           * This is particularly important when selecting
+           * Khmer or another non-English voice.
+           */
+          utterance.lang =
+            selectedVoice.lang ||
+            "en-US";
+
         } else {
-          utterance.lang = document.documentElement.lang || "en";
+
+          /*
+           * Do not force "en" if the user has selected
+           * no voice. Let the browser use its default.
+           */
+          utterance.lang =
+            document.documentElement.lang ||
+            "en";
         }
 
         utterance.rate = 1;
         utterance.pitch = 1;
         utterance.volume = 1;
 
-        utterance.onstart = function () {
-          setStatus("Reading aloud...");
-        };
 
-        utterance.onend = function () {
-          setStatus("Finished reading.");
-          currentUtterance = null;
-        };
+        /* -------------------------------------------------------
+           SPEECH EVENTS
+           ------------------------------------------------------- */
 
-        utterance.onerror = function (event) {
-          setStatus("Speech error: " + (event && event.error ? event.error : "unknown error"));
-          currentUtterance = null;
-        };
+        utterance.onstart =
+          function () {
 
-        currentUtterance = utterance;
-        synth.speak(utterance);
+            if (!speechStopped) {
+
+              speechPaused = false;
+
+              setStatus(
+                "Reading aloud..."
+              );
+            }
+          };
+
+
+        utterance.onpause =
+          function () {
+
+            /*
+             * Browser confirms that speech is paused.
+             */
+            speechPaused = true;
+
+            if (!speechStopped) {
+              setStatus("Paused.");
+            }
+          };
+
+
+        utterance.onresume =
+          function () {
+
+            /*
+             * Browser confirms that speech resumed.
+             */
+            speechPaused = false;
+
+            if (!speechStopped) {
+              setStatus(
+                "Reading aloud..."
+              );
+            }
+          };
+
+
+        utterance.onend =
+          function () {
+
+            /*
+             * Speech completed normally.
+             */
+            speechPaused = false;
+
+            if (!speechStopped) {
+
+              setStatus(
+                "Finished reading."
+              );
+            }
+
+            currentUtterance = null;
+          };
+
+
+        utterance.onerror =
+          function (event) {
+
+            speechPaused = false;
+
+            if (!speechStopped) {
+
+              const error =
+                event && event.error
+                  ? event.error
+                  : "unknown error";
+
+              setStatus(
+                "Speech error: " + error
+              );
+            }
+
+            currentUtterance = null;
+          };
+
+
+        /*
+         * IMPORTANT:
+         * Store the SAME utterance before speaking.
+         */
+        currentUtterance =
+          utterance;
+
+
+        /*
+         * A short delay after cancel() improves reliability
+         * in some browsers, especially when restarting speech.
+         */
+        setTimeout(
+          function () {
+
+            if (
+              currentUtterance === utterance &&
+              !speechStopped
+            ) {
+
+              synth.speak(
+                utterance
+              );
+            }
+
+          },
+          50
+        );
       }
+
+
+      /* =========================================================
+         NAVIGATION
+         ========================================================= */
 
       function goBackToEdit() {
+
         stopSpeech();
-        readerView.classList.add("hidden");
-        editorView.classList.remove("hidden");
+
+        readerView.classList.add(
+          "hidden"
+        );
+
+        editorView.classList.remove(
+          "hidden"
+        );
+
         setStatus("");
+
         textbox.focus();
       }
+
 
       function clearAll() {
+
         stopSpeech();
+
         textbox.value = "";
+
         articleBody.innerHTML = "";
+
         articleTitle.textContent = "";
-        articleMeta.textContent = "Clean article view for better readability.";
+
+        articleMeta.textContent =
+          "Clean article view for better readability.";
+
         setStatus("");
-        if (readerView && !readerView.classList.contains("hidden")) {
+
+        if (
+          readerView &&
+          !readerView.classList.contains(
+            "hidden"
+          )
+        ) {
           goBackToEdit();
         }
+
         textbox.focus();
       }
 
-      btnConvert.addEventListener("click", convertToArticle);
-      btnClear.addEventListener("click", clearAll);
-      btnRead.addEventListener("click", speakTextFromArticle);
-      btnPause.addEventListener("click", pauseSpeech);
-      btnResume.addEventListener("click", resumeSpeech);
-      btnStop.addEventListener("click", function () {
-        stopSpeech();
-        setStatus("Stopped.");
-      });
-      btnEdit.addEventListener("click", goBackToEdit);
-      btnDarkMode.addEventListener("click", toggleDarkMode);
+
+      /* =========================================================
+         BUTTON EVENTS
+         ========================================================= */
+
+      btnConvert.addEventListener(
+        "click",
+        convertToArticle
+      );
+
+      btnClear.addEventListener(
+        "click",
+        clearAll
+      );
+
+      btnRead.addEventListener(
+        "click",
+        speakTextFromArticle
+      );
+
+      btnPause.addEventListener(
+        "click",
+        pauseSpeech
+      );
+
+      btnResume.addEventListener(
+        "click",
+        resumeSpeech
+      );
+
+      btnStop.addEventListener(
+        "click",
+        function () {
+
+          stopSpeech();
+
+          setStatus("Stopped.");
+        }
+      );
+
+      btnEdit.addEventListener(
+        "click",
+        goBackToEdit
+      );
+
+      btnDarkMode.addEventListener(
+        "click",
+        toggleDarkMode
+      );
+
+
+      /* =========================================================
+         INITIALIZATION
+         ========================================================= */
 
       warmUpSpeech();
+
       if (supportsSpeech()) {
+
         populateVoices();
+
+        /*
+         * Voices are often loaded asynchronously by the browser.
+         */
         if ("onvoiceschanged" in synth) {
-          synth.onvoiceschanged = populateVoices;
+
+          synth.onvoiceschanged =
+            populateVoices;
         }
       }
 
-      textbox.addEventListener("keydown", function (event) {
-        const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
-        if ((isMac ? event.metaKey : event.ctrlKey) && event.key === "Enter") {
-          event.preventDefault();
-          convertToArticle();
+
+      /* =========================================================
+         CTRL/CMD + ENTER
+         ========================================================= */
+
+      textbox.addEventListener(
+        "keydown",
+        function (event) {
+
+          const isMac =
+            navigator.platform
+              .toUpperCase()
+              .indexOf("MAC") >= 0;
+
+          if (
+            (isMac
+              ? event.metaKey
+              : event.ctrlKey) &&
+            event.key === "Enter"
+          ) {
+
+            event.preventDefault();
+
+            convertToArticle();
+          }
         }
-      });
+      );
+
+
+      /* =========================================================
+         LOAD THEME
+         ========================================================= */
 
       loadSavedTheme();
+
     })();
   </script>
 </body>
 </html>
 
-
-<!-- 2026.06 : v2, with help from MS Copilot. -->
-<!-- Created and maintained by Sam Ath Try. -->
+<!-- Last revised: August 2026-->
+<!-- Created and maintained by SamAT -->
