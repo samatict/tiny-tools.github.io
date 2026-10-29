@@ -1,0 +1,181 @@
+<!-- Managed by SAT (date: 2026/10/29). Coding with help using Google Gemini -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ស្វែងរកតាមលេខបណ្ណ</title>
+  
+  <!-- Google Fonts: Noto Serif Khmer -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Configure Tailwind to use Noto Serif Khmer as the default font family
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Serif Khmer"', 'serif'],
+            serif: ['"Noto Serif Khmer"', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @keyframes pulse-slow {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.03); opacity: 0.95; }
+    }
+    .animate-pulse-slow { animation: pulse-slow 3s infinite ease-in-out; }
+  </style>
+</head>
+
+<body class="bg-slate-50 min-h-screen text-slate-800 font-sans flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="bg-blue-500 text-white shadow-lg">
+    <div class="max-w-xl mx-auto px-4 py-4 flex items-center space-x-3">
+      <div class="bg-white/10 p-2 rounded-xl text-2xl">
+        <i class="fa-solid fa-store text-white-300"></i>
+      </div>
+      <div>
+        <h1 class="text-xl font-bold tracking-tight">ស្វែងរកព័ត៌មានបណ្ណ គម្រោងហ្កាឡាក់ស៊ីណាវ៉ា់ត្រា</h1>
+        <!-- <p class="text-xs text-indigo-200">Verify product availability in stock</p> -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-xl w-full mx-auto p-4 sm:p-6 my-auto">
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 sm:p-8 text-center">
+      <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl shadow-inner">
+        <i class="fa-solid fa-file-invoice"></i>
+      </div>
+      <h2 class="text-2xl font-bold text-slate-900 mb-2">ស្វែងរកតាមលេខបណ្ណ ឬលេខក្បាលដី ខាងក្រោមនេះ</h2>
+      <p class="text-slate-500 text-sm mb-6">
+        សូមបញ្ចូលលេខបណ្ណឬលេខក្បាលដី ។ បើមានទិន្នន័យ សូមទៅក្រសួងរៀបចំដែនដី។ បើមិនទាន់មានទិន្នន័យទេ មិនទាន់ត្រូវការទៅទេ។
+      </p>
+
+      <!-- Search Form -->
+      <form id="searchForm" onsubmit="checkProduct(event)" class="flex flex-col sm:flex-row gap-3">
+        <div class="relative flex-1">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="ឧទាហរណ៍: 01090506-0010"
+            class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white text-slate-800 font-medium transition-all"
+            required
+          />
+        </div>
+        <button 
+          type="submit" 
+          id="submitBtn"
+          class="px-7 py-3.5 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-semibold rounded-xl shadow-md shadow-indigo-200 transition-all duration-150 flex items-center justify-center gap-2"
+        >
+          ស្វែងរក
+        </button>
+      </form>
+    </div>
+
+    <!-- Result Box -->
+    <div id="resultContainer" class="hidden mt-6 transition-all duration-300"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400">
+    <p>© ក្រុមការងារដោះស្រាយគម្រោងបុរីឡេងណាវ៉ាត្រា</p>
+  </footer>
+
+  <!-- Script Logic -->
+  <script>
+    // PUT THE GOOGLE APPS SCRIPT WEB APP URL BELOW:
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzS8QBUl54cfbC-4LKqTD-yKbYZBUu98edL1EH5xQ8-7WiRKxNQOL2nYINHbLQNP15hLw/exec";
+
+    async function checkProduct(event) {
+      event.preventDefault();
+      const id = document.getElementById('searchInput').value.trim();
+      const resultContainer = document.getElementById('resultContainer');
+      const submitBtn = document.getElementById('submitBtn');
+
+      if (!id) return;
+
+      // Loading state
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> កំពុងស្វែងរក...`;
+      resultContainer.classList.add('hidden');
+
+      try {
+        const response = await fetch(`${WEB_APP_URL}?id=${encodeURIComponent(id)}`);
+        const result = await response.json();
+
+        resultContainer.classList.remove('hidden');
+
+        if (result.exists) {
+          const data = result.data;
+          let detailsHtml = '';
+          
+          // Render other column keys/values safely (excluding ProductID itself)
+          for (const [key, val] of Object.entries(data)) {
+            if (key !== 'ProductID' && val) {
+              detailsHtml += `
+                <div class="bg-white/80 p-2 rounded-lg border border-emerald-100 text-left">
+                  <span class="text-slate-500 block text-xs font-medium">${key}</span>
+                  <span class="text-slate-800 font-semibold text-sm">${val}</span>
+                </div>
+              `;
+            }
+          }
+
+          resultContainer.innerHTML = `
+            <div class="bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-400 text-emerald-900 rounded-2xl p-6 sm:p-8 shadow-lg text-center animate-pulse-slow">
+              <div class="w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-md">
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+              <span class="inline-block px-3 py-1 bg-emerald-200/70 text-emerald-800 rounded-full font-mono text-xs font-bold mb-2">
+                ID: ${id}
+              </span>
+              <h3 class="text-2xl font-black text-emerald-950 mb-2">មានទិន្នន័យ។ សូមមកជួបក្រុមការងារនៅក្រសួងរៀបចំដែនដី</h3>
+              <p class="text-base text-emerald-800 font-medium max-w-md mx-auto mb-4">
+                សូមរៀបចំឯកសារតាមការណែនាំ ក្នុងសេចក្តីប្រកាសព័ត៌មានរបស់ក្រសួង។
+                https://web.facebook.com/share/p/1CE14Nmjtr/ </strong>
+              </p>
+              ${detailsHtml ? `<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4 pt-4 border-t border-emerald-200">${detailsHtml}</div>` : ''}
+            </div>
+          `;
+        } else {
+          resultContainer.innerHTML = `
+            <div class="bg-rose-50 border-2 border-rose-300 text-rose-900 rounded-2xl p-6 sm:p-8 shadow-sm text-center">
+              <div class="w-16 h-16 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+                <i class="fa-solid fa-circle-xmark"></i>
+              </div>
+              <span class="inline-block px-3 py-1 bg-rose-100 text-rose-800 rounded-full font-mono text-xs font-bold mb-2">
+                ID: ${id}
+              </span>
+              <h3 class="text-2xl font-bold text-rose-950 mb-2">មិនទាន់មានទិន្នន័យសម្រាប់លេខបណ្ណនេះទេ។</h3>
+              <p class="text-sm text-rose-700 max-w-md mx-auto">
+                សូមអធ្យាស្រ័យ ក្រុមការងារមិនទាន់មានទិន្នន័យសម្រាប់លេខបណ្ណនេះទេ ដូច្នេះ មិនទាន់ត្រូវការទៅជួបក្រុមការងារនៅក្រសួងរៀបចំដែនដី នោះទេ។
+              </p>
+            </div>
+          `;
+        }
+      } catch (error) {
+        console.error(error);
+        alert("An error occurred while connecting to the inventory server.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Check Status";
+      }
+    }
+  </script>
+</body>
+</html>
